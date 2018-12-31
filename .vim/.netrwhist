@@ -1,4 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/agiom-dev/Documents/EMS/ancient_lab/queues/compare/includes'
 let g:netrw_dirhist_2='/home/agiom-dev/Documents/EMS/ancient_lab/queues/compare/src'
+let g:netrw_dirhist_3='/home/agiom-dev/Documents/EMS/ancient_lab/queues'
+let g:netrw_dirhist_4='/home/agiom-dev/Documents/EMS/ancient_lab/queues/compare'
+let g:netrw_dirhist_5='/home/agiom-dev/Documents/EMS/ancient_lab/queues/compare/src'
+let g:netrw_dirhist_6='/home/agiom-dev/Documents/EMS/ancient_lab/queues'
+let g:netrw_dirhist_7='/home/agiom-dev/Documents/EMS/ancient_lab/queues/compare'
+let g:netrw_dirhist_8='/home/agiom-dev/Documents/EMS/ancient_lab/queues/compare/src'
+let g:netrw_dirhist_9='/home/agiom-dev/Documents/EMS/doc/doc_oscar_final/Boost_threading_example/includes'

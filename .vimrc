@@ -1,11 +1,17 @@
-set nocompatible              " be iMproved, required
+set nocompatible
 set autoindent
 set smartindent
-"set number
+set relativenumber
+filetype plugin on
+filetype indent on
+set completeopt-=preview
 syntax on
-set complete-=i
+"set path+=**
+"set complete-=i
+set wildmenu
 
-colorscheme nord
+colorscheme janah
+"colorscheme Tomorow-night
 
 nnoremap ,tm :-1read ~/.vim/.testMain<CR>3l
 inoremap ,a ->
@@ -15,19 +21,18 @@ inoremap { <Esc>o{<CR>}<Esc>O
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap " ""<Esc>i
-inoremap ;; <Esc>A;
+inoremap ; <Esc>A;
 inoremap ,, <Esc>la,<Space>
 nnoremap <<< ostd::cout << "" << std::endl;<Esc>5ba
 nnoremap ,p :r ~/.vim/.protec<CR>kddA
 nnoremap ,m :r ~/.vim/.main<CR>jo
 nnoremap ,M :r ~/.vim/.Make<CR>2jA
-inoremap sss std::string
 nnoremap ç :tabp<CR>
 nnoremap à :tabn<CR>
 nnoremap ,( cf))<Esc>i
 nnoremap // 0i//<Esc>
 nnoremap ,/ 02x
-inoremap ttt this->
 inoremap rrr return ();<Esc>hi
 nnoremap OO O<Esc>O
 inoremap vv void
+inoremap <CR> <Esc>o

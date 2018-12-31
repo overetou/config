@@ -1,12 +1,18 @@
 alias install="sudo apt-get install"
 alias update="sudo apt-get update"
+alias uu="sudo apt-get update;sudo apt-get upgrade"
 alias upgrade="sudo apt-get upgrade"
 alias autoremove="sudo apt-get autoremove"
 alias add="git add"
 alias commit="git commit -m"
+alias status="git status"
+alias pull="git pull"
 alias cl="clear"
+alias ..="cd .."
 alias lsa="ls -a"
+alias lab="cd ~/Documents/EMS/ancient_lab"
 alias t="date +"%H:%M""
 alias b='upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep -E "state|to\ full|percentage"'
-alias rs='Redshift -O'
-
+alias rs='redshift -O 2300'
+alias repo='cd /home/agiom-dev/Documents/EMS/EMS_FRANCE'
+alias search="find . -name"
