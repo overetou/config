@@ -1,0 +1,72 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+EMSDEVICE_HPP	inc/EMSDevice.hpp	13;"	d
+EMSDevice	inc/EMSDevice.hpp	/^class  EMSDevice {$/;"	c
+EMSGYRO_HPP	inc/EMSGyro.hpp	13;"	d
+EMSGyro	inc/EMSGyro.hpp	/^class  EMSGyro : public EMSDevice {$/;"	c
+EMSGyro	src/EMSGyro.cpp	/^EMSGyro::EMSGyro() {$/;"	f	class:EMSGyro
+EMSGyroTest	tests/test.cpp	/^class	EMSGyroTest : public ::testing::Test, public EMSGyro$/;"	c	file:
+GYRO_STOP	inc/EMSGyro.hpp	18;"	d
+READ	drafts/open.cpp	7;"	d	file:
+READ	src/EMSGyro.cpp	14;"	d	file:
+TEST_F	tests/test.cpp	/^TEST_F(EMSGyroTest, iocontrol)$/;"	f
+TEST_F	tests/test.cpp	/^TEST_F(EMSGyroTest, open_and_close)$/;"	f
+TEST_F	tests/test.cpp	/^TEST_F(EMSGyroTest, read)$/;"	f
+TEST_F	tests/test.cpp	/^TEST_F(EMSGyroTest, setReadHandler)$/;"	f
+TEST_F	tests/test.cpp	/^TEST_F(EMSGyroTest, write)$/;"	f
+WRITE	drafts/open.cpp	6;"	d	file:
+WRITE	src/EMSGyro.cpp	13;"	d	file:
+bno	src/script.py	/^bno = BNO055.BNO055(serial_port='\/dev\/serial0', rst=18)$/;"	v
+bno	src/script2.py	/^bno = BNO055.BNO055(serial_port='\/dev\/serial0', rst=18)$/;"	v
+bno	tests/constantInput.py	/^bno = BNO055.BNO055(serial_port='\/dev\/serial0', rst=18)$/;"	v
+close	src/EMSGyro.cpp	/^bool EMSGyro::close(const void* data) {$/;"	f	class:EMSGyro
+constantInput	tests/test.cpp	/^	EMSGyro	constantInput;$/;"	m	class:EMSGyroTest	file:
+do_nothing	src/EMSGyro.cpp	/^void  do_nothing() {$/;"	f
+i	src/script.py	/^				i = 0$/;"	v
+i	src/script.py	/^			i = 0$/;"	v
+i	src/script.py	/^			i = i + 1$/;"	v
+i	src/script.py	/^		i = 0$/;"	v
+i	src/script.py	/^i = 0$/;"	v
+i	src/script2.py	/^				i = 0$/;"	v
+i	src/script2.py	/^			i = 0$/;"	v
+i	src/script2.py	/^			i = i + 1$/;"	v
+i	src/script2.py	/^		i = 0$/;"	v
+i	src/script2.py	/^i = 0$/;"	v
+i	tests/constantInput.py	/^				i = 0$/;"	v
+i	tests/constantInput.py	/^			i = 0$/;"	v
+i	tests/constantInput.py	/^			i = i + 1$/;"	v
+i	tests/constantInput.py	/^		i = 0$/;"	v
+i	tests/constantInput.py	/^i = 0$/;"	v
+iocontrol	src/EMSGyro.cpp	/^uint32_t EMSGyro::iocontrol (const void* iocontroldata) {$/;"	f	class:EMSGyro
+last	src/script.py	/^			last = False$/;"	v
+last	src/script.py	/^			last = True$/;"	v
+last	src/script.py	/^last = False$/;"	v
+last	src/script2.py	/^			last = False$/;"	v
+last	src/script2.py	/^			last = True$/;"	v
+last	src/script2.py	/^last = False$/;"	v
+last	tests/constantInput.py	/^			last = False$/;"	v
+last	tests/constantInput.py	/^			last = True$/;"	v
+last	tests/constantInput.py	/^last = False$/;"	v
+main	drafts/open.cpp	/^int	main(void)$/;"	f
+main	tests/simpleMain.cpp	/^int	main(void)$/;"	f
+main	tests/test.cpp	/^int	main(int argc, char** argv)$/;"	f
+mtx	inc/EMSDevice.hpp	/^  std::mutex	mtx;$/;"	m	class:EMSDevice
+open	src/EMSGyro.cpp	/^bool EMSGyro::open(const void* data) {$/;"	f	class:EMSGyro
+p_out	inc/EMSGyro.hpp	/^  int  p_out[2];$/;"	m	class:EMSGyro
+pid	inc/EMSGyro.hpp	/^  pid_t  pid = 0;$/;"	m	class:EMSGyro
+popen2	drafts/open.cpp	/^pid_t popen2(const char *command, int *infp, int *outfp)$/;"	f
+popen2	src/EMSGyro.cpp	/^pid_t popen2(const char *command, int *infp, int *outfp) {$/;"	f
+print_hello	tests/test.cpp	/^void	print_hello(void)$/;"	f
+read	src/EMSGyro.cpp	/^uint32_t EMSGyro::read(void* buffer) {$/;"	f	class:EMSGyro
+readCallback	inc/EMSGyro.hpp	/^  void (*readCallback)(void);$/;"	m	class:EMSGyro
+script_command	inc/EMSGyro.hpp	/^  std::string  script_command;$/;"	m	class:EMSGyro
+setReadHandler	src/EMSGyro.cpp	/^bool EMSGyro::setReadHandler(void (*readCallback)(void)) {$/;"	f	class:EMSGyro
+setScriptName	inc/EMSGyro.hpp	/^  void  setScriptName(const std::string script_command) {$/;"	f	class:EMSGyro
+setWriteHandler	src/EMSGyro.cpp	/^bool EMSGyro::setWriteHandler(void (*writeCallback)(void)) {$/;"	f	class:EMSGyro
+write	src/EMSGyro.cpp	/^uint32_t EMSGyro::write(void* buffer) {$/;"	f	class:EMSGyro
+z	tests/constantInput.py	/^z = 0$/;"	v
+~EMSGyro	src/EMSGyro.cpp	/^EMSGyro::~EMSGyro() {$/;"	f	class:EMSGyro
