@@ -26,13 +26,15 @@ inoremap ,, <Esc>la,<Space>
 nnoremap <<< ostd::cout << "" << std::endl;<Esc>5ba
 nnoremap ,p :r ~/.vim/.protec<CR>kddA
 nnoremap ,m :r ~/.vim/.main<CR>jo
+inoremap ,w while ()<Esc>i
+inoremap ,i if ()<Esc>i
 nnoremap ,M :r ~/.vim/.Make<CR>2jA
 nnoremap ç :tabp<CR>
 nnoremap à :tabn<CR>
 nnoremap ,( cf))<Esc>i
 nnoremap // 0i//<Esc>
 nnoremap ,/ 02x
-inoremap rrr return ();<Esc>hi
+inoremap ,r return ();<Esc>hi
 nnoremap OO O<Esc>O
 inoremap vv void
 inoremap <CR> <Esc>o
