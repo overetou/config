@@ -1,0 +1,89 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BOOL	includes/libshuttle.h	10;"	d
+CC	Makefile	/^CC = gcc$/;"	m
+CC	Test/Makefile	/^CC = gcc$/;"	m
+FLAGS	Makefile	/^FLAGS = -Wall -Werror -Wextra$/;"	m
+FLAGS	Test/Makefile	/^FLAGS = -Wall -Werror -Wextra$/;"	m
+INT_MAX_LENGTH	includes/libshuttle.h	9;"	d
+LI	includes/libshuttle.h	8;"	d
+LIBSHUTTLE_H	includes/libshuttle.h	2;"	d
+NAME	Makefile	/^NAME = libshuttle.a$/;"	m
+NAME	Test/Makefile	/^NAME = LaunchTest$/;"	m
+OBJ	Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ	Test/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+SIZE	includes/libshuttle.h	11;"	d
+SRC	Makefile	/^SRC = $(shell find src\/ -type f -regex ".*\\.c")$/;"	m
+SRC	Test/Makefile	/^SRC = $(shell find ..\/src\/ -type f -regex ".*\\.c") main.c$/;"	m
+add_link	src/lists/simple_lists.c	/^void		add_link(simple_list_t** endlink, void* content)$/;"	f
+advance_and_check	src/file_manipulation/navigation.c	/^void	advance_and_check(FILE* raw_file, char to_match, int to_cross, LI* to_travel)$/;"	f
+allocate_simple_list	src/lists/simple_lists.c	/^simple_list_t*	allocate_simple_list(void)$/;"	f
+char_to_int	src/type_manipulation/type_conversion.c	/^int	char_to_int(const char c)$/;"	f
+char_to_int_test	Test/main.c	/^BOOL	char_to_int_test()$/;"	f
+check_file_presence	src/directory_manipulation/basic.c	/^BOOL	check_file_presence(simple_list_t* names, int length)$/;"	f
+close_file	src/file_manipulation/open_and_close.c	/^void    close_file(FILE* raw_file)$/;"	f
+cmp_tab	src/int_manipulation/compare.c	/^BOOL	cmp_tab(const int* tab1, const int* tab2, const int size)$/;"	f
+cmpstr_test	Test/main.c	/^BOOL	cmpstr_test(void)$/;"	f
+content	includes/libshuttle.h	/^	void* content;$/;"	m	struct:simple_list_s
+copy_string	src/string_manipulation/basic.c	/^void	copy_string(const char* source, char* recipient)$/;"	f
+count_char	src/parsing/simple_parsing.c	/^int	count_char(const char* str, char to_find)$/;"	f
+count_char_test	Test/main.c	/^BOOL	count_char_test()$/;"	f
+destroy_list	src/lists/simple_lists.c	/^void		destroy_list(simple_list_t* lst)$/;"	f
+divide	src/int_manipulation/tab_manipulation.c	/^int	divide(const int n1, const int n2)$/;"	f
+do_for_each	src/int_manipulation/tab_manipulation.c	/^void	do_for_each(int* tab, int size, void (*operation)(int*, int*), int* params)$/;"	f
+exit_arrow	src/exit/exit.c	/^void		exit_arrow(const char* str, int i, const char* msg)$/;"	f
+exit_msg	src/exit/exit.c	/^void	exit_msg(const char* to_disp)$/;"	f
+find_mult_size	src/int_manipulation/meta.c	/^void	find_mult_size(const int n, mult_size_t *to_fill)$/;"	f
+flen	src/file_manipulation/file_length.c	/^LI      flen(FILE* raw_file)$/;"	f
+get_char	src/file_manipulation/get.c	/^char    get_char(int file_descriptor)$/;"	f
+get_code_line	src/file_manipulation/get.c	/^void	get_code_line(FILE* raw_file, char* buffer)$/;"	f
+get_int	src/file_manipulation/get.c	/^int     get_int(FILE* raw_file, LI* to_travel, char separator)$/;"	f
+get_number	src/parsing/input.c	/^int	get_number(const char* str, int* tab, const char separator)$/;"	f
+init_simple_list	src/lists/simple_lists.c	/^simple_list_t* init_simple_list(void* content)$/;"	f
+initialize_simple_list	src/lists/simple_lists.c	/^void	initialize_simple_list(simple_list_t** link_tab, void* content)$/;"	f
+input_numbers	src/parsing/input.c	/^int*	input_numbers(const char* str, int* tab_size_tofill)$/;"	f
+input_numbers_test	Test/main.c	/^BOOL	input_numbers_test(void)$/;"	f
+int_to_str	src/type_manipulation/type_conversion.c	/^void	int_to_str(int n, char* buff, int mult)$/;"	f
+is_alpha	src/type_manipulation/type_question.c	/^BOOL	is_alpha(char c)$/;"	f
+is_alphanum	src/type_manipulation/type_question.c	/^BOOL	is_alphanum(char c)$/;"	f
+is_digit	src/type_manipulation/type_question.c	/^BOOL	is_digit(char c)$/;"	f
+is_lowercase	src/type_manipulation/type_question.c	/^BOOL	is_lowercase(char c)$/;"	f
+is_uppercase	src/type_manipulation/type_question.c	/^BOOL	is_uppercase(char c)$/;"	f
+main	Test/main.c	/^int	main(void)$/;"	f
+main	Test/sandPool.c	/^int	main(int argc, char **argv)$/;"	f
+mult	includes/libshuttle.h	/^	int	mult;$/;"	m	struct:mult_size_s
+mult_size_s	includes/libshuttle.h	/^typedef struct	mult_size_s$/;"	s
+mult_size_t	includes/libshuttle.h	/^}		mult_size_t;$/;"	t	typeref:struct:mult_size_s
+multiply	src/int_manipulation/tab_manipulation.c	/^int	multiply(const int n1, const int n2)$/;"	f
+next	includes/libshuttle.h	/^	struct simple_list_s* next;$/;"	m	struct:simple_list_s	typeref:struct:simple_list_s::simple_list_s
+open_file	src/file_manipulation/open_and_close.c	/^FILE*   open_file(char *file_name)$/;"	f
+put_arrow	src/string_manipulation/put.c	/^void	put_arrow(const char* str, int i)$/;"	f
+putchr	src/string_manipulation/put.c	/^void	putchr(const char c)$/;"	f
+putendl	src/string_manipulation/put.c	/^void	putendl(const char* str)$/;"	f
+putnb	src/string_manipulation/put.c	/^void	putnb(const int n, const  mult_size_t meta)$/;"	f
+putstr	src/string_manipulation/put.c	/^void	putstr(const char* str)$/;"	f
+puttab	src/string_manipulation/put.c	/^void	puttab(const int* tab, int size)$/;"	f
+quick_putnb	src/string_manipulation/put.c	/^void	quick_putnb(const int n)$/;"	f
+simple_list_s	includes/libshuttle.h	/^typedef struct	simple_list_s$/;"	s
+simple_list_t	includes/libshuttle.h	/^}		simple_list_t;$/;"	t	typeref:struct:simple_list_s
+size	includes/libshuttle.h	/^	int	size;$/;"	m	struct:mult_size_s
+slen	src/string_manipulation/basic.c	/^int	slen(char* str)$/;"	f
+slen_test	Test/main.c	/^BOOL	slen_test(void)$/;"	f
+snowball_operation	src/int_manipulation/tab_manipulation.c	/^int	snowball_operation(const int* tab, const int size, int (*operation)(const int, const int))$/;"	f
+str_equals_any	src/lists/simple_lists.c	/^char		str_equals_any(const char* str, simple_list_t* strs)$/;"	f
+str_to_int	src/type_manipulation/type_conversion.c	/^int	str_to_int(const char* str)$/;"	f
+str_to_int_sign	src/type_manipulation/type_conversion.c	/^int	str_to_int_sign(const char* str)$/;"	f
+str_to_int_test	Test/main.c	/^BOOL	str_to_int_test()$/;"	f
+string	includes/libshuttle.h	12;"	d
+strings_match	src/string_manipulation/compareS.c	/^int	strings_match(const char* str1, const char *str2)$/;"	f
+strnew	src/string_manipulation/basic.c	/^char*	strnew(const char* str, int length)$/;"	f
+sum	src/int_manipulation/tab_manipulation.c	/^int	sum(const int n1, const int n2)$/;"	f
+sum_tab	src/int_manipulation/tab_manipulation.c	/^int	sum_tab(const int* tab, const int size)$/;"	f
+swap_pointer	src/generic_manipulation/basic.c	/^void	swap_pointer(void** p1, void** p2)$/;"	f
+swap_test	Test/main.c	/^BOOL	swap_test(void)$/;"	f
+test	Test/main.c	/^void	test(BOOL passed)$/;"	f
+test_exit	src/exit/exit.c	/^void		test_exit(void*	test_ptr, const char* msg)$/;"	f
