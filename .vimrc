@@ -11,30 +11,70 @@ syntax on
 set wildmenu
 
 colorscheme janah
-"colorscheme Tomorow-night
 
-nnoremap ,tm :-1read ~/.vim/.testMain<CR>3l
+let mapleader = ","
+
+"insert mode
 inoremap ,a ->
-nnoremap ,i i#include 
-nnoremap ,tt :-1read ~/.vim/.test<CR>wa
-inoremap { <Esc>o{<CR>}<Esc>O
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap " ""<Esc>i
 inoremap ; <Esc>A;
 inoremap ,, <Esc>la,<Space>
-nnoremap <<< ostd::cout << "" << std::endl;<Esc>5ba
-nnoremap ,p :r ~/.vim/.protec<CR>kddA
-nnoremap ,m :r ~/.vim/.main<CR>jo
-inoremap ,w while ()<Esc>i
+inoremap ,w while ()<cr>{<cr>}<Esc>2kf(a
 inoremap ,i if ()<Esc>i
-nnoremap ,M :r ~/.vim/.Make<CR>2jA
-nnoremap ç :tabp<CR>
-nnoremap à :tabn<CR>
-nnoremap ,( cf))<Esc>i
-nnoremap // 0i//<Esc>
-nnoremap ,/ 02x
-inoremap ,r return ();<Esc>hi
-nnoremap OO O<Esc>O
-inoremap vv void
+inoremap ,r return (<Esc>A);<Esc>hi
 inoremap <CR> <Esc>o
+inoremap jk <Esc>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> coucou
+inoremap <Esc> <cr>
+inoremap "" ""<Esc>i
+inoremap '' ''<Esc>i
+inoremap {{ {}<Esc>i
+inoremap [[ []<Esc>i
+inoremap << <><Esc>i
+inoremap (( ()<Esc>i
+inoremap <cr><cr> <cr><Esc>O
+inoremap jj <Esc>la<Space>
+inoremap kk <Esc>jo
+
+"normal mode
+nnoremap ,i i#include 
+nnoremap ,tt :-1read ~/.vim/.test<CR>wa
+nnoremap ,m :r ~/.vim/.main<CR>jo
+nnoremap ,M :r ~/.vim/.MakeEx<CR>kdd2jA
+nnoremap - ddp
+nnoremap + ddkP
+nnoremap 0 viwU
+nnoremap <leader>h :help
+nnoremap <leader>, ,
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>G
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+nnoremap <Up> <nop>
+nnoremap <Down> <nop>
+nnoremap <S-Left> :tabp<cr>
+nnoremap <S-Right> :tabn<cr>
+
+"Abbreviations
+iabbrev vv void
+
+vnoremap <leader>" <Esc>`>a"<Esc>`<i"<Esc>f"l
+vnoremap <leader>' <Esc>`>a'<Esc>`<i'<Esc>f'l
+vnoremap <leader>< <Esc>`>a><Esc>`<i<<Esc>f>l
+
+"autocommands
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o#define " . gatename . "\n"
+  execute "normal! o#endif"
+  execute "normal! kO\n"
+endfunction
+
+augroup CFile
+	autocmd!
+	autocmd BufNewFile *.h call <SID>insert_gates()
+	autocmd BufWritePre *.{c,h} :normal gg=G''
+augroup END

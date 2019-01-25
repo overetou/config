@@ -1,0 +1,34 @@
+.PHONY : clean, fclean, all
+
+NAME = 
+
+objdir = obj
+
+obj = $(addprefix $(objdir)/,main.o )
+
+VPATH = src
+
+CC = gcc
+
+CFLAGS = -Wextra -Werror -Wall -I headers/
+
+$(objdir)/%.o : %.c
+	$(COMPILE.c) $(OUTPUT_OPTION) $<
+
+all: $(NAME)
+
+$(NAME): $(obj)
+	$(CC) $(CFLAGS) -o $@ $^
+
+$(obj): | $(objdir)
+
+$(objdir):
+	mkdir $(objdir)
+
+clean:
+	rm $(obj)
+
+fclean: 
+	rm $(NAME)
+
+re: clean fclean all
