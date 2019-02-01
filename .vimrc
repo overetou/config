@@ -9,6 +9,7 @@ syntax on
 "set path+=**
 "set complete-=i
 set wildmenu
+setl foldmethod=syntax
 
 colorscheme janah
 
@@ -35,7 +36,7 @@ inoremap [[ []<Esc>i
 inoremap << <><Esc>i
 inoremap (( ()<Esc>i
 inoremap <cr><cr> <cr><Esc>O
-inoremap jj <Esc>la<Space>
+inoremap jj <Esc>la
 inoremap kk <Esc>jo
 
 "normal mode
@@ -46,7 +47,7 @@ nnoremap ,M :r ~/.vim/.MakeEx<CR>kdd2jA
 nnoremap - ddp
 nnoremap + ddkP
 nnoremap 0 viwU
-nnoremap <leader>h :help
+nnoremap <leader>h :help 
 nnoremap <leader>, ,
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>G
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -78,3 +79,7 @@ augroup CFile
 	autocmd BufNewFile *.h call <SID>insert_gates()
 	autocmd BufWritePre *.{c,h} :normal gg=G''
 augroup END
+
+"commands <cr>
+command Addprot execute "normal!yy:b fortress.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
+command Addtest execute "normal!^f<Tab>lyw:b main.c\<CR>G?}<CR>nOT();\<Esc>hP{O\<CR>BOOL<Tab>(void)\<Esc>BPo{\<CR>return (1);\<Esc>o}\<Esc>:w\<CR>:e #\<CR>"
