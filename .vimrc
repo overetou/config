@@ -9,7 +9,7 @@ syntax on
 "set path+=**
 "set complete-=i
 set wildmenu
-setl foldmethod=syntax
+set nohlsearch
 
 colorscheme janah
 
@@ -21,13 +21,14 @@ inoremap ; <Esc>A;
 inoremap ,, <Esc>la,<Space>
 inoremap ,w while ()<cr>{<cr>}<Esc>2kf(a
 inoremap ,i if ()<Esc>i
+inoremap ,e else
 inoremap ,r return (<Esc>A);<Esc>hi
 inoremap <CR> <Esc>o
 inoremap jk <Esc>
 inoremap <Left> <nop>
 inoremap <Right> <nop>
 inoremap <Up> <nop>
-inoremap <Down> coucou
+inoremap <Down> <nop>
 inoremap <Esc> <cr>
 inoremap "" ""<Esc>i
 inoremap '' ''<Esc>i
@@ -35,9 +36,12 @@ inoremap {{ {}<Esc>i
 inoremap [[ []<Esc>i
 inoremap << <><Esc>i
 inoremap (( ()<Esc>i
-inoremap <cr><cr> <cr><Esc>O
 inoremap jj <Esc>la
 inoremap kk <Esc>jo
+inoremap vv void
+inoremap /* /*<cr><Esc>xi**<cr>*/<Esc>kA
+inoremap ,{ <Esc>o{<cr>}<Esc>O
+inoremap hh <Esc>o<Esc>O
 
 "normal mode
 nnoremap ,i i#include 
@@ -57,13 +61,16 @@ nnoremap <Up> <nop>
 nnoremap <Down> <nop>
 nnoremap <S-Left> :tabp<cr>
 nnoremap <S-Right> :tabn<cr>
+nnoremap ,z :setl foldmethod=syntax<CR>
 
 "Abbreviations
-iabbrev vv void
+iabbrev wirte write
 
+"Visual mode
 vnoremap <leader>" <Esc>`>a"<Esc>`<i"<Esc>f"l
 vnoremap <leader>' <Esc>`>a'<Esc>`<i'<Esc>f'l
 vnoremap <leader>< <Esc>`>a><Esc>`<i<<Esc>f>l
+vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>f)l
 
 "autocommands
 function! s:insert_gates()
@@ -77,9 +84,10 @@ endfunction
 augroup CFile
 	autocmd!
 	autocmd BufNewFile *.h call <SID>insert_gates()
-	autocmd BufWritePre *.{c,h} :normal gg=G''
 augroup END
 
 "commands <cr>
-command Addprot execute "normal!yy:b fortress.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
-command Addtest execute "normal!^f<Tab>lyw:b main.c\<CR>G?}<CR>nOT();\<Esc>hP{O\<CR>BOOL<Tab>(void)\<Esc>BPo{\<CR>return (1);\<Esc>o}\<Esc>:w\<CR>:e #\<CR>"
+"command Addprot execute "normal!yy:b fortress.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
+command Addprot execute "normal!yy:b computor.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
+command Addtest execute "normal!$F<Tab>lyw:b main.c\<CR>gg?}<CR>nOT();\<Esc>hP{O\<CR>BOOL<Tab>_t(void)\<Esc>BPo{\<CR>return (1);\<Esc>o}\<Esc>:w\<CR>:e #\<CR>"
+command Addfunc execute "normal!:Addprot<CR>:Addtest<CR>"
