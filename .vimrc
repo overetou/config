@@ -39,9 +39,10 @@ inoremap (( ()<Esc>i
 inoremap jj <Esc>la
 inoremap kk <Esc>jo
 inoremap vv void
+inoremap hh <Esc>o<Esc>O
+inoremap yy <Esc>O{<Esc>jo}<Esc>k
 inoremap /* /*<cr><Esc>xi**<cr>*/<Esc>kA
 inoremap ,{ <Esc>o{<cr>}<Esc>O
-inoremap hh <Esc>o<Esc>O
 
 "normal mode
 nnoremap ,i i#include 
@@ -71,6 +72,7 @@ vnoremap <leader>" <Esc>`>a"<Esc>`<i"<Esc>f"l
 vnoremap <leader>' <Esc>`>a'<Esc>`<i'<Esc>f'l
 vnoremap <leader>< <Esc>`>a><Esc>`<i<<Esc>f>l
 vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>f)l
+vnoremap <leader>{ <Esc>`>a}<Esc>`<i{<Esc>f)l
 
 "autocommands
 function! s:insert_gates()
@@ -87,7 +89,7 @@ augroup CFile
 augroup END
 
 "commands <cr>
-"command Addprot execute "normal!yy:b fortress.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
-command Addprot execute "normal!yy:b computor.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
-command Addtest execute "normal!$F<Tab>lyw:b main.c\<CR>gg?}<CR>nOT();\<Esc>hP{O\<CR>BOOL<Tab>_t(void)\<Esc>BPo{\<CR>return (1);\<Esc>o}\<Esc>:w\<CR>:e #\<CR>"
+command Addprot execute "normal!yy:b store.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
+"command Addprot execute "normal!yy:b computor.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
+command Addtest execute "normal!$F<Tab>lyw:b test_main.c\<CR>gg?}<CR>nOT();\<Esc>hP{O\<CR>BOOL<Tab>_t(void)\<Esc>BPo{\<CR>return (1);\<Esc>o}\<Esc>:w\<CR>:e #\<CR>"
 command Addfunc execute "normal!:Addprot<CR>:Addtest<CR>"
