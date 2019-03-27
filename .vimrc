@@ -41,6 +41,7 @@ inoremap kk <Esc>jo
 inoremap vv void
 inoremap hh <Esc>o<Esc>O
 inoremap yy <Esc>O{<Esc>jo}<Esc>k
+inoremap YY <Esc>jddkkdd
 inoremap /* /*<cr><Esc>xi**<cr>*/<Esc>kA
 inoremap ,{ <Esc>o{<cr>}<Esc>O
 
