@@ -16,7 +16,7 @@ colorscheme janah
 let mapleader = ","
 
 "insert mode
-inoremap ,a ->
+inoremap <leader>a ->
 inoremap ; <Esc>A;
 inoremap ,, <Esc>la,<Space>
 inoremap ,w while ()<cr>{<cr>}<Esc>2kf(a
@@ -44,11 +44,11 @@ inoremap yy <Esc>O{<Esc>jo}<Esc>k
 inoremap YY <Esc>jddkkdd
 inoremap /* /*<cr><Esc>xi**<cr>*/<Esc>kA
 inoremap ,{ <Esc>o{<cr>}<Esc>O
+inoremap <leader>m <Esc>:r ~/.vim/.main<CR>jo
 
 "normal mode
 nnoremap ,i i#include 
 nnoremap ,tt :-1read ~/.vim/.test<CR>wa
-nnoremap ,m :r ~/.vim/.main<CR>jo
 nnoremap ,M :r ~/.vim/.MakeEx<CR>kdd2jA
 nnoremap - ddp
 nnoremap + ddkP
@@ -73,13 +73,14 @@ vnoremap <leader>" <Esc>`>a"<Esc>`<i"<Esc>f"l
 vnoremap <leader>' <Esc>`>a'<Esc>`<i'<Esc>f'l
 vnoremap <leader>< <Esc>`>a><Esc>`<i<<Esc>f>l
 vnoremap <leader>( <Esc>`>a)<Esc>`<i(<Esc>f)l
-vnoremap <leader>{ <Esc>`>a}<Esc>`<i{<Esc>f)l
+vnoremap <leader>{ <Esc>`>a}<Esc>`<i{<Esc>f}l
+vnoremap <leader>} <Esc>`<O{<Esc>`>o}<Esc>=i{k%
 
 "autocommands
 function! s:insert_gates()
   let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
   execute "normal! i#ifndef " . gatename
-  execute "normal! o#define " . gatename . "\n"
+  execute "normal! o# define " . gatename . "\n"
   execute "normal! o#endif"
   execute "normal! kO\n"
 endfunction
