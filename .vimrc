@@ -62,6 +62,8 @@ nnoremap <Up> <nop>
 nnoremap <Down> <nop>
 nnoremap <S-Left> :tabp<cr>
 nnoremap <S-Right> :tabn<cr>
+nnoremap <S-Down> <C-w>l
+nnoremap <S-Up> <C-w>h
 nnoremap ,z :setl foldmethod=syntax<CR>
 
 "Abbreviations
