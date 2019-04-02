@@ -41,6 +41,7 @@ inoremap kk <Esc>jo
 inoremap vv void
 inoremap hh <Esc>o<Esc>O
 inoremap yy <Esc>O{<Esc>jo}<Esc>k
+inoremap YY <Esc>jddkkdd
 inoremap /* /*<cr><Esc>xi**<cr>*/<Esc>kA
 inoremap ,{ <Esc>o{<cr>}<Esc>O
 inoremap <leader>m <Esc>:r ~/.vim/.main<CR>jo
@@ -65,6 +66,8 @@ nnoremap <S-Right> :tabn<cr>
 nnoremap <S-Down> <C-w>l
 nnoremap <S-Up> <C-w>h
 nnoremap ,z :setl foldmethod=syntax<CR>
+nnoremap <leader>z :setl foldmethod=syntax<CR>
+nnoremap <leader>S yiw{otypedef struct	<esc>pbrso{<esc>o}<tab><tab><esc>pa;<cr><esc>kO
 
 "Abbreviations
 iabbrev wirte write
@@ -96,3 +99,12 @@ command Addprot execute "normal!yy:b store.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
 "command Addprot execute "normal!yy:b computor.h\<CR>GPA;\<Esc>:w\<CR>:e #\<CR>"
 command Addtest execute "normal!$F<Tab>lyw:b test_main.c\<CR>gg?}<CR>nOT();\<Esc>hP{O\<CR>BOOL<Tab>_t(void)\<Esc>BPo{\<CR>return (1);\<Esc>o}\<Esc>:w\<CR>:e #\<CR>"
 command Addfunc execute "normal!:Addprot<CR>:Addtest<CR>"
+
+function! s:create_struct(strct_name)
+	execute "normal! otypedef struct	s_" . a:strct_name
+	execute "normal! o{"
+	execute "normal! o}		t_" . a:strct_name
+	execute "normal! a;\n\<esc>2k"
+endfunction
+
+command! -nargs=1 Struct call s:create_struct(<f-args>)
