@@ -20,7 +20,7 @@ inoremap <leader>a ->
 inoremap ; <Esc>A;
 inoremap ,, <Esc>la,<Space>
 inoremap ,w while ()<cr>{<cr>}<Esc>2kf(a
-inoremap ,i if ()<Esc>i
+inoremap ,i if (<Esc>A)<Esc>i
 inoremap ,e else
 inoremap ,r return (<Esc>A);<Esc>hi
 inoremap <CR> <Esc>o
