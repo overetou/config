@@ -2,16 +2,20 @@ set nocompatible
 set autoindent
 set smartindent
 set relativenumber
-filetype plugin on
-filetype indent on
+filetype indent plugin on
 set completeopt-=preview
-syntax on
+set incsearch
+set history=20
+set showcmd
+"syntax on
 "set path+=**
 "set complete-=i
 set wildmenu
 set nohlsearch
+let loaded_matchit = 1
+packadd! matchit
 
-colorscheme janah
+"colorscheme janah
 
 let mapleader = ","
 
@@ -39,6 +43,7 @@ inoremap (( ()<Esc>i
 inoremap jj <Esc>la
 inoremap kk <Esc>jo
 inoremap vv void
+inoremap cc char
 inoremap hh <Esc>o<Esc>O
 inoremap yy <Esc>O{<Esc>jo}<Esc>k
 inoremap YY <Esc>jddkkdd
@@ -65,6 +70,11 @@ nnoremap <S-Left> :tabp<cr>
 nnoremap <S-Right> :tabn<cr>
 nnoremap <leader>z :setl foldmethod=syntax<CR>
 nnoremap <leader>S yiw{otypedef struct	<esc>pbrso{<esc>o}<tab><tab><esc>pa;<cr><esc>kO
+nnoremap <leader>f yiwgg}o<tab><esc>pa()<cr>{<cr>}<cr><esc>3k0i
+nnoremap <BS> ^
+nnoremap ^ 0
+nnoremap <Space> $
+nnoremap <F5> i$(<Esc>ea)<Esc>
 
 "Abbreviations
 iabbrev wirte write
