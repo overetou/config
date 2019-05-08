@@ -24,7 +24,7 @@ inoremap <leader>a ->
 inoremap ; <Esc>A;
 inoremap ,, <Esc>la,<Space>
 inoremap ,w while ()<cr>{<cr>}<Esc>2kf(a
-inoremap ,i if ()<Esc>i
+inoremap ,i if (<Esc>A)<Esc>i
 inoremap ,e else
 inoremap ,r return (<Esc>A);<Esc>hi
 inoremap <CR> <Esc>o
@@ -68,6 +68,9 @@ nnoremap <Up> <nop>
 nnoremap <Down> <nop>
 nnoremap <S-Left> :tabp<cr>
 nnoremap <S-Right> :tabn<cr>
+nnoremap <S-Down> <C-w>l
+nnoremap <S-Up> <C-w>h
+nnoremap ,z :setl foldmethod=syntax<CR>
 nnoremap <leader>z :setl foldmethod=syntax<CR>
 nnoremap <leader>S yiw{otypedef struct	<esc>pbrso{<esc>o}<tab><tab><esc>pa;<cr><esc>kO
 nnoremap <leader>f yiwgg}o<tab><esc>pa()<cr>{<cr>}<cr><esc>3k0i
