@@ -17,7 +17,7 @@ hi DiffAdd 		cterm=NONE ctermfg=NONE
 hi DiffChange 	cterm=NONE ctermfg=NONE
 hi DiffDelete 	cterm=NONE ctermfg=NONE
 hi DiffText 	cterm=NONE ctermfg=NONE
-hi ErrorMsg 	cterm=NONE ctermfg=NONE
+hi ErrorMsg 	cterm=NONE ctermfg=red ctermbg=234
 hi VertSplit 	cterm=NONE ctermfg=234 ctermbg=234
 hi Folded 		cterm=NONE ctermfg=NONE
 hi FoldColumn 	cterm=NONE ctermfg=NONE
@@ -58,10 +58,10 @@ hi Tooltip 		cterm=NONE ctermfg=NONE "ctermbg=234
 hi Comment			cterm=NONE ctermfg=223
 hi Constant    		cterm=NONE ctermfg=141"64
 hi String     		cterm=NONE ctermfg=153"180
-hi Character   		cterm=NONE ctermfg=NONE"141
+hi Character   		cterm=NONE ctermfg=141
 hi Number     		cterm=NONE ctermfg=148
 hi Boolean     		cterm=NONE ctermfg=NONE"220
-hi Float     		cterm=NONE ctermfg=NONE
+hi Float     		cterm=NONE ctermfg=148
 hi Function     	cterm=NONE ctermfg=183
 hi Identifier   	cterm=NONE ctermfg=106
 hi Ignore       	cterm=NONE ctermfg=NONE
@@ -80,7 +80,7 @@ hi Define			cterm=NONE ctermfg=147
 hi Macro			cterm=NONE ctermfg=147
 hi PreCondit		cterm=NONE ctermfg=147
 hi Type				cterm=NONE ctermfg=216
-hi StorageClass		cterm=NONE ctermfg=NONE
+hi StorageClass		cterm=NONE ctermfg=106
 hi Structure		cterm=NONE ctermfg=147
 hi Typedef			cterm=NONE ctermfg=174
 hi Special			cterm=NONE ctermfg=214"69

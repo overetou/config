@@ -3,6 +3,7 @@ set autoindent
 set smartindent
 set relativenumber
 filetype indent plugin on
+set scrolloff=20
 set completeopt-=preview
 set incsearch
 set history=20
@@ -14,6 +15,7 @@ set nohlsearch
 let loaded_matchit = 1
 packadd! matchit
 set noruler
+set incsearch
 
 colorscheme perso
 
@@ -29,6 +31,7 @@ inoremap ,e else
 inoremap ,r return (<Esc>A);<Esc>hi
 inoremap <CR> <Esc>o
 inoremap jk <Esc>
+inoremap kj <Esc>:w!<Enter>
 inoremap <Left> <nop>
 inoremap <Right> <nop>
 inoremap <Up> <nop>
@@ -78,6 +81,7 @@ nnoremap <BS> ^
 nnoremap ^ 0
 nnoremap <Space> $
 nnoremap <F5> i$(<Esc>ea)<Esc>
+nnoremap Q :w!<Enter>
 
 "Abbreviations
 iabbrev wirte write
@@ -113,7 +117,7 @@ command Addfunc execute "normal!:Addprot<CR>:Addtest<CR>"
 function! s:create_struct(strct_name)
 	execute "normal! otypedef struct	s_" . a:strct_name
 	execute "normal! o{"
-	execute "normal! o}		t_" . a:strct_name
+	execute "normal! o}				t_" . a:strct_name
 	execute "normal! a;\n\<esc>2k"
 endfunction
 
