@@ -6,16 +6,16 @@ filetype indent plugin on
 set completeopt-=preview
 set incsearch
 set history=20
-set showcmd
-"syntax on
+syntax on
 "set path+=**
 "set complete-=i
 set wildmenu
 set nohlsearch
 let loaded_matchit = 1
 packadd! matchit
+set noruler
 
-"colorscheme janah
+colorscheme perso
 
 let mapleader = ","
 
