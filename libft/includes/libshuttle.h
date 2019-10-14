@@ -72,6 +72,9 @@ int	copy_string(const char* source, char* recipient);
 	//string_compare
 int	strings_match(const char* str1, const char *str2);
 BOOL	str_equals_any(char* str, char** candidates);
+	//strtab_matching
+int		chr_match_any_in_string(const char c, const char *array);
+int		chr_match_in_any_string(const char c, const char **array_set);
 
 //int manipulation
 	//meta
