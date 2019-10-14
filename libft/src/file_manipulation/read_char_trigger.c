@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 17:13:40 by overetou          #+#    #+#             */
-/*   Updated: 2019/07/08 15:48:56 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/14 15:19:55 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		file_match_next_char_arrays(t_buf *b, char *ar_set[])
 
 	if (b->length == 0)
 		return (-1);
-	while ((i = chr_match_any_array(b->str[b->pos],
+	while ((i = chr_match_in_any_string(b->str[b->pos],
 	(const char**)ar_set)) < 0)
 	{
 		if (read_smart_inc(b) < 1)
