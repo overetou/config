@@ -37,20 +37,20 @@ void	swap_pointer(void** p1, void** p2);
 //file manipulation
 	//file_length
 LI	flen(FILE *raw_file);
-	//get
-char    get_char(int file);
-int     get_int(int raw_file, LI* to_travel, char separator);
-void	get_code_line(int file, char*  prototype_buffer);
-char	get_word(int file, char* to_fill, SIZE word_max_length);
-//void	get_code_line(int file, char* buffer);
-	//open_and_close. With fopen and opens with read only option
-FILE*   open_file(char *file_name);
-void    close_file(FILE* raw_file);
-	//navigate
-void	advance_and_check(int raw_file, char to_match, int to_cross, LI* to_travel);
-void	go_next_line(int file);
-	//C_language
-BOOL	find_prototype_in_file(int file, char* prototype_buffer);
+	//buff_basics
+BOOL	refresh_buf(t_buf *b);
+	//fd_basics
+void	rewind_file(const int fd);
+	//read_basic_travel
+BOOL	read_smart_inc(t_buf *b);
+BOOL	read_till_true(t_buf *b, BOOL (*func)(char));
+BOOL	read_till_false(t_buf *b, BOOL (*func)(char));
+BOOL	find_and_skip(t_buf *b, BOOL (*func)(char));
+	//read_char_trigger
+int		file_match_next_char_arrays(t_buf *b, char *ar_set[]);
+BOOL	parse_and_trigger(t_buf *b, void *args, char *s[], BOOL (*f[2])(t_buf*, void*));
+	//wrap_open
+int	open_check(const char *file_name, const char *extension, int option);
 
 //directory_manipulation
 	//directory_basic
