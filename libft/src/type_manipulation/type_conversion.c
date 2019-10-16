@@ -1,4 +1,4 @@
-#include "libshuttle.h"
+#include "libft.h"
 
 //convert a char to an int. If the char is not a digit, who knows what happens.
 int	char_to_int(const char c)

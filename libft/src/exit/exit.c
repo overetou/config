@@ -1,4 +1,4 @@
-#include "libshuttle.h"
+#include "libft.h"
 
 //Display a message passed as argument and exits.
 void	exit_msg(const char* to_disp)

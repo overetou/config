@@ -1,4 +1,4 @@
-#include "libshuttle.h"
+#include "libft.h"
 
 //Returns true if the char is a digit, false if not.
 BOOL	is_digit(char c)

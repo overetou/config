@@ -1,4 +1,4 @@
-#include "libshuttle.h"
+#include "libft.h"
 
 //Takes a file as parameter. 1: puts the file cursor at the end of the file. 2: puts the number of chars measured into a long int variable.
 //3: puts the file cursor at the beginning of the file (its original place). 4: checks that the file is not empty, otherwise exits.

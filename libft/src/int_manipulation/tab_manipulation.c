@@ -1,4 +1,4 @@
-#include "libshuttle.h"
+#include "libft.h"
 
 int	snowball_operation(const int* tab, const int size, int (*operation)(const int, const int))
 {

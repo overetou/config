@@ -1,4 +1,4 @@
-#include "libshuttle.h"
+#include "libft.h"
 
 //Says if two tabs are equal on their <size> first number.
 BOOL	cmp_tab(const int* tab1, const int* tab2, const int size)

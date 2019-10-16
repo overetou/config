@@ -1,4 +1,4 @@
-#include "libshuttle.h"
+#include "libft.h"
 
 //returns the size of the number string. Puts the number string as int in the tab at spot 'count'.
 int	get_number(const char* str, int* tab, const char separator)

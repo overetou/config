@@ -1,4 +1,4 @@
-#include "libshuttle.h"
+#include "libft.h"
 
 //Swap/exchanges the value of two pointers.
 void	swap_pointer(void** p1, void** p2)

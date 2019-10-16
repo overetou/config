@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buff_basics.c                                      :+:      :+:    :+:   */
+/*   mem_assign.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/18 18:00:57 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/16 15:47:19 by overetou         ###   ########.fr       */
+/*   Created: 2019/10/16 16:34:24 by overetou          #+#    #+#             */
+/*   Updated: 2019/10/16 16:39:38 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-BOOL	refresh_buf(t_buf *b)
+void	mcopy(char *src, char *dest, const UINT s)
 {
-	b->length = read(b->fd, b->str, BUFFSIZE);
-	b->pos = 0;
-	if ((b->length) <= 0)
-		return (0);
-	return (1);
+	UINT i;
+
+	i = 0;
+	while (i != s)
+	{
+		dest[i] = src[i];
+		i++;
+	}
 }
+

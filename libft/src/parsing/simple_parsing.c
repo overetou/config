@@ -1,4 +1,4 @@
-#include "libshuttle.h"
+#include "libft.h"
 
 int	count_char(const char* str, char to_find)
 {
