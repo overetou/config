@@ -94,6 +94,8 @@ BOOL	str_equals_any(char *str, char **candidates);
 	//strtab_matching
 int		chr_match_any_in_string(const char c, const char *array);
 int		chr_match_in_any_string(const char c, const char **array_set);
+	//string_link_match
+int	chr_match_in_any_stringlink(const char c, t_simple *s);
 	//string_find
 int	string_reverse_find(const char *str, const char to_find, int searchable_s);
 
