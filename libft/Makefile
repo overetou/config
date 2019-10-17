@@ -1,24 +1,40 @@
-NAME = libshuttle.a
+.PHONY : clean, fclean, all
 
-SRC = $(shell find src/ -type f -regex ".*\.c")
+NAME = libft.a
 
-OBJ = $(SRC:.c=.o)
+objdir = obj
+
+obj = $(addprefix $(objdir)/, exit.o buff_basics.o file_length.o read_char_trigger.o fd_basics.o read_basic_travel.o wrap_open.o mem_assign.o pointer_basics.o simple_link_find.o int_compare.o meta.o tab_manipulation.o input.o simple_parsing.o put.o string_compare.o string_link_match.o string_basic.o string_find.o strtab_matching.o type_conversion.o type_question.o track_insert.o t_simple_basics.o trigger_init.o)
+
+VPATH = src/directory_manipulation:src/file_manipulation:src/generic_manipulation:src/parsing:src/exit:src/int_manipulation:src/string_manipulation:src/type_manipulation:src/lists
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wextra -Werror -Wall -I header/
 
-.PHONY: all, clean, re
+$(objdir)/%.o : %.c
+	@$(COMPILE.c) $(OUTPUT_OPTION) $<
 
-all:
-	$(CC) -c $(SRC) -I includes/
-	ar rc $(NAME) *.o
-	ranlib $(NAME)
+all: $(NAME)
+
+$(NAME): $(obj)
+	@ar rc $@ $^
+	@ranlib $@
+
+$(obj): | $(objdir)
+
+$(objdir):
+	mkdir $(objdir)
 
 clean:
-	rm -f *.o
+	rm -f $(obj)
 
-clean_all: clean
-	rm libshuttle.a
+fclean: clean
+	rm -f $(NAME)
 
-re: clean_all all
+re: fclean all
+
+test: $(NAME)
+	@$(CC) test_main.c -I header/ ./$(NAME)
+	@./a.out
+
