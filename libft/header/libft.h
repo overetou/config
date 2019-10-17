@@ -26,11 +26,23 @@ typedef struct	s_link
 	struct s_link	*next;
 }				t_link;
 
+typedef struct	s_simple
+{
+	struct s_simple *next;
+	void			*content;
+}				t_simple;
+
 typedef struct	s_track
 {
 	t_link		*first;
 	t_link		*last;
 }				t_track;
+
+typedef struct	s_trigger_set
+{
+	t_track         trigger_strings;
+	t_track         trigger_funcs;
+}				t_trigger_set;
 
 typedef struct	s_buf
 {
@@ -51,6 +63,8 @@ void	swap_pointer(void** p1, void** p2);
 	//mem_assign
 void	mcopy(char *src, char *dest, const UINT s);
 //void	swap_content(void* p1, void* p2);
+	//simple_link_find
+void	*get_link_content_by_index(t_simple *l, int i);
 
 //file manipulation
 	//file_length
@@ -65,8 +79,8 @@ BOOL	read_till_true(t_buf *b, BOOL (*func)(char));
 BOOL	read_till_false(t_buf *b, BOOL (*func)(char));
 BOOL	find_and_skip(t_buf *b, BOOL (*func)(char));
 	//read_char_trigger
-int		file_match_next_char_arrays(t_buf *b, char *ar_set[]);
-BOOL	parse_and_trigger(t_buf *b, void *args, char *s[], BOOL (*f[2])(t_buf*, void*));
+int		file_match_next_strset(t_buf *b, t_simple *s);
+BOOL	parse_and_trigger(t_buf *b, t_trigger_set *set);
 	//wrap_open
 int	open_check(const char *file_name, const char *extension, int option);
 
@@ -119,13 +133,19 @@ int	str_to_int_sign(const char* str);
 void	int_to_str(int n, char* buff, int mult);
 
 //lists
-	//simple_lists
-//char		str_equals_any(const char* str, simple_list_t* strs);
+	//track_insert	
+void	track_add(t_track *t, t_link *l);
+void	track_init(t_track *t, t_link *l);
+	//t_simple_basics
+t_simple	*t_simple_create(void *content);
 
 //parsing
-	//simle_parsing
+	//simple_parsing
 int	count_char(const char* str, char to_find);
 	//input
 int*	input_numbers(const char* str, int* tab_size);
+	//trigger_init
+void	trigger_init(t_trigger_set *set, const char *str, char (*f)(t_buf*, void*));
+void	trigger_add(t_trigger_set *set, const char *str, char (*f)(t_buf*, void*));
 
 #endif

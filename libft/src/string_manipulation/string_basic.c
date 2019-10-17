@@ -9,11 +9,6 @@ int	slen(char* str)
 	return (i);
 }
 
-char*	strnew(const char* str, int length)
-{
-	return ((char*)malloc(sizeof(char) * length));
-}
-
 int	copy_string(const char* source, char* recipient)
 {
 	int i = 0;
@@ -26,3 +21,12 @@ int	copy_string(const char* source, char* recipient)
 	return (i);
 }
 	
+char*	strnew(const char* str, int length)
+{
+	char	*new;
+
+	new = (char*)malloc(sizeof(char) * length + 1);
+	if (new)
+		copy_string(str, new);
+	return (new);
+}

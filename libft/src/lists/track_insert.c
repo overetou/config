@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wrap_open.c                                        :+:      :+:    :+:   */
+/*   track_get.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/18 17:01:21 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/17 15:53:03 by overetou         ###   ########.fr       */
+/*   Created: 2019/10/17 16:07:09 by overetou          #+#    #+#             */
+/*   Updated: 2019/10/17 16:12:23 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <fcntl.h>
 
-int		open_check(const char *file_name, const char *extension, int option)
+void	track_init(t_track *t, t_link *l)
 {
-	int	memory;
-
-	memory = (int)slen(file_name);
-	memory = string_reverse_find(file_name, '.', memory);
-	if (memory > 0 && str_perfect_match(file_name + memory, extension))
-		return (open(file_name, option));
-	return (-1);
+	t->first = l;
+	t->last = l;
 }
 
-void	open_stdin(t_buf *b)
+/*
+**Must be used on an already initialised track. (It must have at leat 1 link)
+*/
+void	track_add(t_track *t, t_link *l)
 {
-	b->fd = 0;
-	refresh_buf(b);
+	t->last->next = l;
+	t->last = l;
 }
