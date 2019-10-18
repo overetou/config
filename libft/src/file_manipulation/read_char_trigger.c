@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 17:13:40 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/17 15:39:00 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/18 19:21:27 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		file_match_next_strset(t_buf *b, t_simple *s)
 
 /*
 **Till there is no more chars, if a char contained in a string is found, activate the corresponding function (by index). Returns 1 on success, else 0.
+**Funcs must return 1 on success, 0 on critical failure and -1 to successfully interupt the parsing.
 */
 BOOL	parse_and_trigger(t_buf *b, t_trigger_set *set)
 {

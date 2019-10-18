@@ -118,6 +118,7 @@ int	string_reverse_find(const char *str, const char to_find, int searchable_s);
 void	find_mult_size(const int n, mult_size_t *to_fill);
 	//int_compare
 BOOL	cmp_tab(const int* tab1, const int* tab2, const int size);
+BOOL	int_have_different_sign(int n1, int n2);
 
 //type_manipulation
 	//type_question
@@ -133,11 +134,15 @@ int	str_to_int_sign(const char* str);
 void	int_to_str(int n, char* buff, int mult);
 
 //lists
-	//track_insert	
+	//track_insert
 void	track_add(t_track *t, t_link *l);
 void	track_init(t_track *t, t_link *l);
+	//track_destroy
+void	destroy_track_from_to(t_link *start, t_link *end);
 	//t_simple_basics
 t_simple	*t_simple_create(void *content);
+t_simple	*create_void_simple(void);
+void	*t_simpl_content(void* link);
 
 //parsing
 	//simple_parsing

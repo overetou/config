@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 17:10:41 by overetou          #+#    #+#             */
-/*   Updated: 2019/07/08 15:52:31 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/18 19:53:34 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,21 @@ BOOL	find_and_skip(t_buf *b, BOOL (*func)(char))
 		return (1);
 	}
 	return (0);
+}
+
+BOOL	read_skip_till_c(t_buf *b, const char c)
+{
+	while (read_smart_inc(b))
+	{
+		if (b->str[b->pos] == c)
+			return (1);
+	}
+	return (0);
+}
+
+BOOL	read_go_next_line(t_buf *b, const char c)
+{
+	if (!read_skip_till_c(b, '\n'))
+		return (0);
+	return (read_smart_inc(b));
 }

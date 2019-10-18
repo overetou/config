@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wrap_open.c                                        :+:      :+:    :+:   */
+/*   read_number.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/18 17:01:21 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/18 19:42:38 by overetou         ###   ########.fr       */
+/*   Created: 2019/10/18 18:28:15 by overetou          #+#    #+#             */
+/*   Updated: 2019/10/18 19:42:11 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <fcntl.h>
 
-int		open_check(const char *file_name, const char *extension, int option)
+//Expects that n points on 1 or -1 and that buf is positionned on the first digit
+//of the number. Returns 0 on overflow and 1 on success.
+char	read_int(t_buf *b, int *n)
 {
-	int	memory;
+	int	mem;
 
-	memory = (int)slen(file_name);
-	memory = string_reverse_find(file_name, '.', memory);
-	if (memory > 0 && str_perfect_match(file_name + memory, extension))
-		return (open(file_name, option));
-	return (-1);
-}
-
-void	open_stdin(t_buf *b)
-{
-	b->fd = 0;
+	count = 0;
+	mem = *n * char_to_int(b->str[b->pos]);
+	while (read_smart_inc(b) && is_digit(b->str[b->pos]))
+	{
+		if (int_have_different_sign(*n, mem));
+			return (0);
+		*n = mem;
+		mem = mem * 10 + char_to_int(b->str[b->pos]);
+	}
+	return (1);
 }

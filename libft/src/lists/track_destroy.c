@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wrap_open.c                                        :+:      :+:    :+:   */
+/*   track_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/18 17:01:21 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/18 19:42:38 by overetou         ###   ########.fr       */
+/*   Created: 2019/10/18 18:04:08 by overetou          #+#    #+#             */
+/*   Updated: 2019/10/18 18:13:51 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <fcntl.h>
 
-int		open_check(const char *file_name, const char *extension, int option)
+void	destroy_track_from(t_link *start, t_link *end)
 {
-	int	memory;
+	t_link	*destroyer;
 
-	memory = (int)slen(file_name);
-	memory = string_reverse_find(file_name, '.', memory);
-	if (memory > 0 && str_perfect_match(file_name + memory, extension))
-		return (open(file_name, option));
-	return (-1);
-}
-
-void	open_stdin(t_buf *b)
-{
-	b->fd = 0;
+	while (start != end)
+	{
+		destroyer = start;
+		start = start->next;
+		free(destroyer);just replace that func with a func pointer given in params to have a modular func.
+	}
+	free(end)
 }
