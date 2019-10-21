@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 17:10:41 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/18 19:53:34 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/21 18:57:23 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ BOOL	read_smart_inc(t_buf *b)
 	return (1);
 }
 
-BOOL	read_till_true(t_buf *b, BOOL (*func)(char))
+BOOL	read_till_true(t_buf *b, BOOL (*func)(const char))
 {
 	while (!func(b->str[b->pos]))
 	{
@@ -33,7 +33,7 @@ BOOL	read_till_true(t_buf *b, BOOL (*func)(char))
 	return (1);
 }
 
-BOOL	read_till_false(t_buf *b, BOOL (*func)(char))
+BOOL	read_till_false(t_buf *b, BOOL (*func)(const char))
 {
 	while (func(b->str[b->pos]))
 	{
@@ -43,7 +43,7 @@ BOOL	read_till_false(t_buf *b, BOOL (*func)(char))
 	return (1);
 }
 
-BOOL	find_and_skip(t_buf *b, BOOL (*func)(char))
+BOOL	find_and_skip(t_buf *b, BOOL (*func)(const char))
 {
 	if (read_till_true(b, func))
 	{
@@ -63,7 +63,7 @@ BOOL	read_skip_till_c(t_buf *b, const char c)
 	return (0);
 }
 
-BOOL	read_go_next_line(t_buf *b, const char c)
+BOOL	read_go_next_line(t_buf *b)
 {
 	if (!read_skip_till_c(b, '\n'))
 		return (0);

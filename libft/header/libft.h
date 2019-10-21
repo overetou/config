@@ -13,6 +13,11 @@
 #define string(name, size) char name[size]; name[size - 1] = 0;
 #define	C_TYPES char* c_types[] = {"void", "char", "int", "BOOL", "size", NULL};
 #define BUFFSIZE 100
+/*
+**Used in read_word.
+*/
+#define WORD_BUF_SIZE 10
+
 
 //keps track of the size of an int in term of chars. See find_mult_size.
 typedef struct	mult_size_s
@@ -73,16 +78,22 @@ LI	flen(FILE *raw_file);
 BOOL	refresh_buf(t_buf *b);
 	//fd_basics
 void	rewind_file(const int fd);
+void	open_stdin(t_buf *b);
 	//read_basic_travel
 BOOL	read_smart_inc(t_buf *b);
-BOOL	read_till_true(t_buf *b, BOOL (*func)(char));
-BOOL	read_till_false(t_buf *b, BOOL (*func)(char));
-BOOL	find_and_skip(t_buf *b, BOOL (*func)(char));
+BOOL	read_till_true(t_buf *b, BOOL (*func)(const char));
+BOOL	read_till_false(t_buf *b, BOOL (*func)(const char));
+BOOL	find_and_skip(t_buf *b, BOOL (*func)(const char));
+BOOL	read_go_next_line(t_buf *b);
+BOOL	read_skip_till_c(t_buf *b, const char c);
 	//read_char_trigger
 int		file_match_next_strset(t_buf *b, t_simple *s);
 BOOL	parse_and_trigger(t_buf *b, t_trigger_set *set);
 	//wrap_open
 int	open_check(const char *file_name, const char *extension, int option);
+	//read_word
+char	*read_word(t_buf *b, BOOL (*is_in_word_definition)(const char));
+char	*read_next_word(t_buf *b, BOOL (*is_in_word_definition)(const char));
 
 //directory_manipulation
 	//directory_basic
@@ -119,6 +130,7 @@ void	find_mult_size(const int n, mult_size_t *to_fill);
 	//int_compare
 BOOL	cmp_tab(const int* tab1, const int* tab2, const int size);
 BOOL	int_have_different_sign(int n1, int n2);
+int		int_is_comprised(int n, int first, int last);
 
 //type_manipulation
 	//type_question
