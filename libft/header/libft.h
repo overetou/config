@@ -94,6 +94,8 @@ int	open_check(const char *file_name, const char *extension, int option);
 	//read_word
 char	*read_word(t_buf *b, BOOL (*is_in_word_definition)(const char));
 char	*read_next_word(t_buf *b, BOOL (*is_in_word_definition)(const char));
+	//read_number
+char	read_int(t_buf *b, int *n);
 
 //directory_manipulation
 	//directory_basic
