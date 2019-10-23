@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 18:33:34 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/18 18:33:36 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/23 18:15:38 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	int_to_str(int n, char* buff, int mult)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	while (mult)
 	{
 		buff[i] = n / mult + '0';

@@ -28,7 +28,13 @@ void	putnb(const int n, const  mult_size_t meta)
 {
 	char	buff[meta.size + 1];
 
-	int_to_str(n, buff, meta.mult);
+	if (n < 0)
+	{
+		buff[0] = '-';
+		int_to_str(-n, buff + 1, meta.mult);
+	}
+	else
+		int_to_str(n, buff, meta.mult);
 	putstr(buff);
 }
 
@@ -36,7 +42,11 @@ void	quick_putnb(const int n)
 {
 	mult_size_t	meta;
 
-	find_mult_size(n, &meta);
+	//printf("quick_putnb: true = %d\n", n);
+	if (n < 0)
+		find_mult_size(-n, &meta);
+	else
+		find_mult_size(n, &meta);
 	putnb(n, meta);
 }
 

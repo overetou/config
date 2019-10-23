@@ -17,8 +17,8 @@ BOOL	cmp_tab(const int* tab1, const int* tab2, const int size)
 BOOL	int_have_different_sign(int n1, int n2)
 {
 	if (n1 >= 0)
-		return (n2 >= 0);
-	return (n2 < 0);
+		return (n2 < 0);
+	return (n2 >= 0);
 }
 
 int		int_is_comprised(int n, int first, int last)
