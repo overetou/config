@@ -70,6 +70,7 @@ void	mcopy(char *src, char *dest, const UINT s);
 //void	swap_content(void* p1, void* p2);
 	//simple_link_find
 void	*get_link_content_by_index(t_simple *l, int i);
+void	*get_link_by_index(t_link *l, int i);
 
 //file manipulation
 	//file_length

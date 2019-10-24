@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 18:26:05 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/21 18:55:58 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:45:19 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*read_word(t_buf *b, BOOL (*is_in_word_definition)(const char))
 	new = malloc(WORD_BUF_SIZE);
 	new[0] = b->str[b->pos];
 	i = 1;
+	read_smart_inc(b);
 	while (is_in_word_definition(b->str[b->pos]))
 	{
 		new[i] = b->str[b->pos];
