@@ -43,6 +43,13 @@ typedef struct	s_track
 	t_link		*last;
 }				t_track;
 
+typedef struct	s_link_track
+{
+	struct s_link_track	*next;
+	t_link		*first;
+	t_link		*last;
+}				t_link_track;
+
 typedef struct	s_trigger_set
 {
 	t_track         trigger_strings;
@@ -152,12 +159,19 @@ void	int_to_str(int n, char* buff, int mult);
 	//track_insert
 void	track_add(t_track *t, t_link *l);
 void	track_init(t_track *t, t_link *l);
+void	link_track_add(t_link_track *t, t_link *l);
+void	link_track_init(t_link_track *t, t_link *l);
 	//track_destroy
-void	destroy_track_from_to(t_link *start, t_link *end);
+void	destroy_track_from_to(t_link *start, t_link *end, void (*free_func)(void*));
+void	destroy_track(t_track *t, void (*free_func)(void*));
+void	destroy_link_track_content(t_link_track* t);
+void	destroy_link_track(void *t);
 	//t_simple_basics
 t_simple	*t_simple_create(void *content);
 t_simple	*create_void_simple(void);
 void	*t_simpl_content(void* link);
+	//track_create
+t_link_track	*link_track_create(t_link *l);
 
 //parsing
 	//simple_parsing

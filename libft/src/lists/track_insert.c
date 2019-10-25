@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:07:09 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/17 16:12:23 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/25 17:57:58 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ void	track_init(t_track *t, t_link *l)
 **Must be used on an already initialised track. (It must have at leat 1 link)
 */
 void	track_add(t_track *t, t_link *l)
+{
+	t->last->next = l;
+	t->last = l;
+}
+
+void	link_track_init(t_link_track *t, t_link *l)
+{
+	t->first = l;
+	t->last = l;
+}
+
+void	link_track_add(t_link_track *t, t_link *l)
 {
 	t->last->next = l;
 	t->last = l;
