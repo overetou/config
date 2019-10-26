@@ -164,6 +164,7 @@ void	link_track_init(t_link_track *t, t_link *l);
 	//track_destroy
 void	destroy_track_from_to(t_link *start, t_link *end, void (*free_func)(void*));
 void	destroy_track(t_track *t, void (*free_func)(void*));
+void	track_remove_last(t_track *t, void (*free_func)(void*));
 void	destroy_link_track_content(t_link_track* t);
 void	destroy_link_track(void *t);
 	//t_simple_basics

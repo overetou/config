@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 18:04:08 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/25 18:34:05 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/26 17:38:52 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,25 @@ void	destroy_track(t_track *t, void (*free_func)(void*))
 	}
 }
 
+void	track_remove_last(t_track *t, void (*free_func)(void*))
+{
+	t_link*	l;
+
+	l = t->first;
+	while (l->next != t->last)
+		l = l->next;
+	free_func(t->last);
+	t->last = l;
+}
+
 void	destroy_link_track_content(t_link_track* t)
 {
 	t_link	*l;
 	t_link	*destroyer;
 
 	l = ((t_link_track*)t)->first;
+	if (l == NULL)
+		return ;
 	while (l != ((t_link_track*)t)->last)
 	{
 		destroyer = l;
