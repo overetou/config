@@ -154,6 +154,8 @@ int	char_to_int(const char c);
 int	str_to_int(const char* str);
 int	str_to_int_sign(const char* str);
 void	int_to_str(int n, char* buff, int mult);
+	//str_to_float
+float	char_to_float(char c);
 
 //lists
 	//track_insert

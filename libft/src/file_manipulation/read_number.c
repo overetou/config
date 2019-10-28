@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 18:28:15 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/23 18:43:25 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/28 18:25:12 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,47 @@ char	read_int(t_buf *b, int *n)
 			if (int_have_different_sign(*n, mem))
 				return (0);
 			*n = mem;
+		}
+	}
+	return (1);
+}
+
+void	read_float_tail(t_buf *b, float *n, float multiplier)
+{
+	while (read_smart_inc(b) && is_digit(b->str[b->pos]))
+	{
+		*n = *n + char_to_float(b->str[b->pos]) * multiplier;
+		multiplier /= 10;
+	}
+}
+
+char	read_float(t_buf *b, float *n)
+{
+	float	mem;
+	float	sign;
+	int		count;
+
+	count = 0;
+	sign = *n;
+	mem = *n * char_to_int(b->str[b->pos]);
+	*n = mem;
+	while (read_smart_inc(b))
+	{
+		if (is_digit(b->str[b->pos]))
+		{
+			mem = mem * 10 + sign * char_to_float(b->str[b->pos]);
+			if (int_have_different_sign(*n, mem))
+				return (0);
+			*n = mem;
+		}
+		else if (b->str[b->pos] == '.')
+		{
+			if (!read_smart_inc(b))
+				return (0);
+			if (!is_digit(b->str[b->pos]))
+				return (0);
+			read_float_tail(b, n, sign / 10);
+			return (1);
 		}
 	}
 	return (1);
