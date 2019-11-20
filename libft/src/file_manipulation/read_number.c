@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 18:28:15 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/28 18:25:12 by overetou         ###   ########.fr       */
+/*   Updated: 2019/11/18 21:23:42 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ char	read_int(t_buf *b, int *n)
 
 void	read_float_tail(t_buf *b, float *n, float multiplier)
 {
+	*n = *n + char_to_float(b->str[b->pos]) * multiplier;
 	while (read_smart_inc(b) && is_digit(b->str[b->pos]))
 	{
-		*n = *n + char_to_float(b->str[b->pos]) * multiplier;
 		multiplier /= 10;
+		*n = *n + char_to_float(b->str[b->pos]) * multiplier;
 	}
 }
 
@@ -65,7 +66,7 @@ char	read_float(t_buf *b, float *n)
 
 	count = 0;
 	sign = *n;
-	mem = *n * char_to_int(b->str[b->pos]);
+	mem = sign * char_to_int(b->str[b->pos]);
 	*n = mem;
 	while (read_smart_inc(b))
 	{
@@ -85,6 +86,8 @@ char	read_float(t_buf *b, float *n)
 			read_float_tail(b, n, sign / 10);
 			return (1);
 		}
+		else
+			return(1);
 	}
 	return (1);
 }

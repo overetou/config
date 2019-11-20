@@ -64,10 +64,18 @@ typedef struct	s_buf
 	int			fd;
 }				t_buf;
 
+typedef struct	s_fake_buf
+{
+	char		*str;
+	int			length;
+	int			pos;
+}				t_fake_buf;
+
 //exit
 void	exit_msg(const char *to_disp);
 void	test_exit(void*	test_ptr, const char *msg);
 void	exit_arrow(const char* str, int i, const char* msg);
+void	*null_msg(const char *s);
 
 //generic_manipulation
 	//pointer_basics
@@ -104,6 +112,7 @@ char	*read_word(t_buf *b, BOOL (*is_in_word_definition)(const char));
 char	*read_next_word(t_buf *b, BOOL (*is_in_word_definition)(const char));
 	//read_number
 char	read_int(t_buf *b, int *n);
+char	read_float(t_buf *b, float *n);
 
 //directory_manipulation
 	//directory_basic
@@ -117,6 +126,9 @@ void	put_arrow(const char* str, int i);
 void	putnb(const int n, const  mult_size_t meta);
 void	quick_putnb(const int n);
 void	puttab(const int* tab, int size);
+	//put_less_common
+void	dry_putstr(char *s, int size);
+void	quick_put_float(float f);
 	//string_basic
 int	slen(const char* str);
 char*	strnew(const char* str, int length);
@@ -156,6 +168,11 @@ int	str_to_int_sign(const char* str);
 void	int_to_str(int n, char* buff, int mult);
 	//str_to_float
 float	char_to_float(char c);
+char	float_to_chr(float f);
+	//float
+float	get_float_tail(float f);
+BOOL	float_have_different_sign(float n1, float n2);
+BOOL	float_simple_power(float *to_power, int power);
 
 //lists
 	//track_insert

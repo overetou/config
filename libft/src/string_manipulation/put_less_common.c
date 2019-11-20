@@ -1,23 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_to_float.c                                     :+:      :+:    :+:   */
+/*   put_less_common.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/28 18:26:33 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/30 16:59:39 by overetou         ###   ########.fr       */
+/*   Created: 2019/10/30 15:33:32 by overetou          #+#    #+#             */
+/*   Updated: 2019/10/30 17:46:25 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-float	char_to_float(char c)
+void	dry_putstr(char *s, int size)
 {
-	return ((float)(c - '0'));
+	write(1, s, size);
 }
 
-char	float_to_chr(float f)
+void	put_tail(float f)
 {
-	return ((char)(((int)f) + '0'));
+	char	to_put[10];
+	int		i;
+
+	f = get_float_tail(f);
+	if (f < 0)
+		f = -f;
+	if (f < 0.0001)
+		return ;
+	to_put[0] = '.';
+	i = 1;
+	while (f >= 0.0001 && i < 7)
+	{
+		f *= 10;
+		to_put[i] = float_to_chr(f);
+		f -= (float)((int)f);
+		i++;
+	}
+	dry_putstr(to_put, i);
+}
+
+void	quick_put_float(float f)
+{
+	quick_putnb((int)f);
+	put_tail(f);
 }

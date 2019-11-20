@@ -21,3 +21,9 @@ void		exit_arrow(const char* str, int i, const char* msg)
 			put_arrow(str, i);
 			exit(0);
 }
+
+void	*null_msg(const char *s)
+{
+	putendl(s);
+	return (NULL);
+}

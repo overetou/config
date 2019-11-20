@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 18:04:08 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/26 17:38:52 by overetou         ###   ########.fr       */
+/*   Updated: 2019/11/20 16:29:58 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,19 @@ void	destroy_link_track_content(t_link_track* t)
 	t_link	*destroyer;
 
 	l = ((t_link_track*)t)->first;
+	putendl("Hello!");
 	if (l == NULL)
 		return ;
 	while (l != ((t_link_track*)t)->last)
 	{
 		destroyer = l;
 		l = l->next;
+		putendl("verification bien prise en compte");
+		if (destroyer == NULL)
+			putendl("Attempting to free a NULL");
 		free(destroyer);
 	}
+	putendl("Rider on the storm");
 	free(l);
 	t->first = NULL;
 }
