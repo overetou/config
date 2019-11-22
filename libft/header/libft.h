@@ -71,6 +71,17 @@ typedef struct	s_fake_buf
 	int			pos;
 }				t_fake_buf;
 
+//maths
+	//square_root
+float	squrt_1(const float n);
+float	find_piece(const float part, const float limit, float *candidate);
+float	sqrt_past_point(float n, float remain, float result, UINT multiplier);
+float	squrt_2(float n, char is_par);
+	//resolution
+void	resolve_first_degree(float *v, float *solutions);
+UINT	resolve_second_degree(float *v, float *solutions);
+int		do_resolution(float *v, unsigned int size, float *solutions);
+
 //exit
 void	exit_msg(const char *to_disp);
 void	test_exit(void*	test_ptr, const char *msg);
