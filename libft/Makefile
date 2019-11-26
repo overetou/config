@@ -6,7 +6,8 @@ objdir = obj
 
 obj = $(addprefix $(objdir)/, exit.o buff_basics.o file_length.o read_char_trigger.o fd_basics.o read_basic_travel.o wrap_open.o mem_assign.o pointer_basics.o simple_link_find.o int_compare.o meta.o \
 tab_manipulation.o input.o simple_parsing.o put.o string_compare.o string_link_match.o string_basic.o string_find.o strtab_matching.o type_question.o track_insert.o t_simple_basics.o trigger_init.o \
-track_destroy.o read_word.o read_number.o int_to_str.o track_create.o str_to_float.o float.o put_less_common.o resolution.o square_root.o str_to_int.o)
+track_destroy.o read_word.o read_number.o int_to_str.o track_create.o str_to_float.o float.o put_less_common.o resolution.o square_root.o str_to_int.o \
+int_simple.o)
 
 VPATH = src/directory_manipulation:src/file_manipulation:src/generic_manipulation:src/parsing:src/exit:src/int_manipulation:src/string_manipulation:src/type_manipulation:src/lists:src/maths
 

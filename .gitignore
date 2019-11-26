@@ -10,3 +10,5 @@ libft/to_incorporate/src/string_put_tab.c
 libft/to_incorporate/src/string_put.c
 libft/to_incorporate/src/tab_analysis.c
 .vim/todo.txt
+libft/.vscode/c_cpp_properties.json
+libft/.vscode/settings.json

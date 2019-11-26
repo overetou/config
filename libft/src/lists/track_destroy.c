@@ -70,3 +70,31 @@ void	destroy_link_track(void	*t)
 	destroy_link_track_content(t);
 	free(((t_link_track*)t));
 }
+
+void	track_remove_link(t_track *t, t_link *l)
+{
+	t_link *cur;
+	t_link *next;
+
+	if (t->first == t->last)
+		t->first = NULL;
+	else if (l == t->first)
+		t->first = l->next;
+	else
+	{
+		cur = t->first;
+		next = cur->next;
+		while (next != t->last)
+		{
+			if (next == l)
+			{
+				cur->next = next->next;
+				free(next);
+				return;
+			}
+			next = cur->next;
+		}
+		t->last = cur;
+	}
+	free(l);
+}

@@ -1,10 +1,8 @@
-#include "libshuttle.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
-	char	str[] = "ta";
-
-	copy_string("yo", str);
-	putendl(str);
-	return (0);
+	float f = 3;
+	float d = 5.5;
+	printf("5.5 %% 3 = %d\n", (int)d % (int)f);
 }

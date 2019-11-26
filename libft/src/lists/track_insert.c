@@ -38,3 +38,17 @@ void	link_track_add(t_link_track *t, t_link *l)
 	t->last->next = l;
 	t->last = l;
 }
+
+void	track_insert_list(t_track *t, t_link *l)
+{
+	if (t->first == NULL)
+	{
+		track_init(t, l);
+		l = l->next;
+	}
+	while (l != NULL)
+	{
+		track_add(t, l);
+		l = l->next;
+	}
+}

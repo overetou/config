@@ -158,6 +158,8 @@ int	chr_match_in_any_stringlink(const char c, t_simple *s);
 int	string_reverse_find(const char *str, const char to_find, int searchable_s);
 
 //int manipulation
+	//int_simple
+void update_if_superior(size_t *to_update, size_t candidate);
 	//meta
 void	find_mult_size(const int n, mult_size_t *to_fill);
 	//int_compare
@@ -191,18 +193,21 @@ void	track_add(t_track *t, t_link *l);
 void	track_init(t_track *t, t_link *l);
 void	link_track_add(t_link_track *t, t_link *l);
 void	link_track_init(t_link_track *t, t_link *l);
+void	track_insert_list(t_track *t, t_link *l);
 	//track_destroy
 void	destroy_track_from_to(t_link *start, t_link *end, void (*free_func)(void*));
 void	destroy_track(t_track *t, void (*free_func)(void*));
 void	track_remove_last(t_track *t, void (*free_func)(void*));
 void	destroy_link_track_content(t_link_track* t);
 void	destroy_link_track(void *t);
+void	track_remove_link(t_track *t, t_link *l);
 	//t_simple_basics
 t_simple	*t_simple_create(void *content);
 t_simple	*create_void_simple(void);
 void	*t_simpl_content(void* link);
 	//track_create
 t_link_track	*link_track_create(t_link *l);
+void	track_replace_link_with_list(t_track *t, t_link *to_replace, t_link *list);
 
 //parsing
 	//simple_parsing
