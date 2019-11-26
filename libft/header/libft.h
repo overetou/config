@@ -64,13 +64,6 @@ typedef struct	s_buf
 	int			fd;
 }				t_buf;
 
-typedef struct	s_fake_buf
-{
-	char		*str;
-	int			length;
-	int			pos;
-}				t_fake_buf;
-
 //maths
 	//square_root
 float	squrt_1(const float n);
@@ -188,8 +181,11 @@ BOOL	float_have_different_sign(float n1, float n2);
 BOOL	float_simple_power(float *to_power, int power);
 
 //lists
+	//link_basics
+void    *link_advance_till_next_equals(t_link *l, void *to_match);
 	//track_insert
 void	track_add(t_track *t, t_link *l);
+void	track_push(t_track *t, t_link *l);
 void	track_init(t_track *t, t_link *l);
 void	link_track_add(t_link_track *t, t_link *l);
 void	link_track_init(t_link_track *t, t_link *l);
@@ -208,6 +204,7 @@ void	*t_simpl_content(void* link);
 	//track_create
 t_link_track	*link_track_create(t_link *l);
 void	track_replace_link_with_list(t_track *t, t_link *to_replace, t_link *list);
+void	track_push_internal_link(t_link *l, t_track *t);
 
 //parsing
 	//simple_parsing

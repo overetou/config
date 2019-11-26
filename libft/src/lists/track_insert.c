@@ -27,6 +27,13 @@ void	track_add(t_track *t, t_link *l)
 	t->last = l;
 }
 
+//push the link at the start of the track
+void	track_push(t_track *t, t_link *l)
+{
+	l->next = t->first;
+	t->first = l;
+}
+
 void	link_track_init(t_link_track *t, t_link *l)
 {
 	t->first = l;
