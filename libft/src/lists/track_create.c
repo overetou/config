@@ -21,14 +21,22 @@ void	track_push_internal_link(t_link *l, t_track *t)
 {
 	t_link	*prev;
 
-	printf("l = %p, t->first = %p\n", l, t->first);
 	if (l != (void*)(t->first))
 	{
-		putendl("track_push_internal_link is about to do stuff");
 		prev = link_advance_till_next_equals(t->first, l);
 		prev->next = l->next;
 		track_push(t, l);
 	}
-	else
-		putendl("Nothing done");
+}
+
+void	link_track_push_internal_link(t_link *l, t_link_track *t)
+{
+	t_link	*prev;
+
+	if (l != (void*)(t->first))
+	{
+		prev = link_advance_till_next_equals(t->first, l);
+		prev->next = l->next;
+		link_track_push(t, l);
+	}
 }

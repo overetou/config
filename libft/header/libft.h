@@ -74,6 +74,8 @@ float	squrt_2(float n, char is_par);
 void	resolve_first_degree(float *v, float *solutions);
 UINT	resolve_second_degree(float *v, float *solutions);
 int		do_resolution(float *v, unsigned int size, float *solutions);
+	//equ_sol_display
+void	display_solutions(const float *solutions, const UINT solution_nb);
 
 //exit
 void	exit_msg(const char *to_disp);
@@ -133,6 +135,8 @@ void	puttab(const int* tab, int size);
 	//put_less_common
 void	dry_putstr(char *s, int size);
 void	quick_put_float(float f);
+void	put_signed_float(float f);
+void	put_operation_float(float f);
 	//string_basic
 int	slen(const char* str);
 char*	strnew(const char* str, int length);
@@ -186,6 +190,7 @@ void    *link_advance_till_next_equals(t_link *l, void *to_match);
 	//track_insert
 void	track_add(t_track *t, t_link *l);
 void	track_push(t_track *t, t_link *l);
+void	link_track_push(t_link_track *t, t_link *l);
 void	track_init(t_track *t, t_link *l);
 void	link_track_add(t_link_track *t, t_link *l);
 void	link_track_init(t_link_track *t, t_link *l);
@@ -205,6 +210,7 @@ void	*t_simpl_content(void* link);
 t_link_track	*link_track_create(t_link *l);
 void	track_replace_link_with_list(t_track *t, t_link *to_replace, t_link *list);
 void	track_push_internal_link(t_link *l, t_track *t);
+void	link_track_push_internal_link(t_link *l, t_link_track *t);
 
 //parsing
 	//simple_parsing

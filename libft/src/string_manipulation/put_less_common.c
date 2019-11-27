@@ -45,3 +45,32 @@ void	quick_put_float(float f)
 	quick_putnb((int)f);
 	put_tail(f);
 }
+
+void	put_signed_float(float f)
+{
+	if (f < 0)
+	{
+		putchr('-');
+		quick_put_float(-f);
+	}
+	else
+	{
+		putchr('+');
+		quick_put_float(f);
+	}
+}
+
+void	put_operation_float(float f)
+{
+	if (f < 0)
+	{
+		putstr(" - ");
+		quick_put_float(-f);
+	}
+	else
+	{
+		putstr(" + ");
+		quick_put_float(f);
+	}
+}
+

@@ -60,6 +60,7 @@ UINT	resolve_second_degree(float *v, float *solutions)
 	return (1);
 }
 
+//passed degree must incrementated by one. If degree = 2, pass it as 3.
 int		do_resolution(float *v, unsigned int size, float *solutions)
 {
 	putstr("Polynomial degree : ");
