@@ -10,10 +10,10 @@ t_link_track	*link_track_create(t_link *l)
 	return (new);
 }
 
-void	track_replace_link_with_list(t_track *t, t_link *to_replace, t_link *list)
+void	link_track_replace_link_with_list(t_link_track *t, t_link *to_replace, t_link *list)
 {
-	track_insert_list(t, list);
-	track_remove_link(t, to_replace);
+	link_track_insert_list(t, list);
+	link_track_remove_link(t, to_replace);
 }
 
 //This func is used to put all non processed expr at the start of the list.

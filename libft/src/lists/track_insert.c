@@ -52,16 +52,20 @@ void	link_track_add(t_link_track *t, t_link *l)
 	t->last = l;
 }
 
-void	track_insert_list(t_track *t, t_link *l)
+void	link_track_insert_list(t_link_track *t, t_link *l)
 {
+	t_link *save;
+
 	if (t->first == NULL)
 	{
-		track_init(t, l);
+		link_track_init(t, l);
 		l = l->next;
 	}
-	while (l != NULL)
+	else
 	{
-		track_add(t, l);
-		l = l->next;
+		save = t->first;
+		t->first = l;
+		l = link_advance_till_next_equals(l, NULL);
+		l->next = save;
 	}
 }

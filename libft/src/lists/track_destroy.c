@@ -71,7 +71,7 @@ void	destroy_link_track(void	*t)
 	free(((t_link_track*)t));
 }
 
-void	track_remove_link(t_track *t, t_link *l)
+void	link_track_remove_link(t_link_track *t, t_link *l)
 {
 	t_link *cur;
 	t_link *next;
