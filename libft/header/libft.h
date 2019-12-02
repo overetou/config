@@ -209,6 +209,7 @@ void	*t_simpl_content(void* link);
 	//track_create
 t_link_track	*link_track_create(t_link *l);
 void	link_track_replace_link_with_list(t_link_track *t, t_link *to_replace, t_link *list);
+void	link_track_replace_link_with_list_copy(t_link_track *t, t_link *to_replace, t_link *list, t_link*(*copy_func)(t_link*));
 void	track_push_internal_link(t_link *l, t_track *t);
 void	link_track_push_internal_link(t_link *l, t_link_track *t);
 
