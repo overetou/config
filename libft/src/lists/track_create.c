@@ -13,6 +13,7 @@ t_link_track	*link_track_create(t_link *l)
 void	link_track_replace_link_with_list(t_link_track *t, t_link *to_replace, t_link *list)
 {
 	link_track_insert_list(t, list);
+	putendl("link_track_replace_link_with_list: link_track_insert_list passed");
 	link_track_remove_link(t, to_replace);
 }
 

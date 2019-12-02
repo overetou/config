@@ -79,22 +79,22 @@ void	link_track_remove_link(t_link_track *t, t_link *l)
 	if (t->first == t->last)
 		t->first = NULL;
 	else if (l == t->first)
-		t->first = l->next;
-	else
 	{
 		cur = t->first;
-		next = cur->next;
-		while (next != t->last)
-		{
-			if (next == l)
-			{
-				cur->next = next->next;
-				free(next);
-				return;
-			}
-			next = cur->next;
-		}
-		t->last = cur;
+		t->first = cur->next;
+		free(cur);
 	}
-	free(l);
+	else
+	{
+		cur = link_advance_till_next_equals(t->first->next, l);
+		if (cur->next == t->last)
+		{
+			free(t->last);
+			t->last = cur;
+			return;
+		}
+		next = cur->next->next;
+		free(cur->next);
+		cur->next = next;
+	}
 }

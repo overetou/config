@@ -58,14 +58,16 @@ void	link_track_insert_list(t_link_track *t, t_link *l)
 
 	if (t->first == NULL)
 	{
+		putendl("link_track_insert_list: y->first == NULL");
 		link_track_init(t, l);
-		l = l->next;
 	}
 	else
 	{
 		save = t->first;
 		t->first = l;
+		putendl("link_track_insert_list: before infinite loop.");
 		l = link_advance_till_next_equals(l, NULL);
+		putendl("link_track_insert_list: infinite loop is passed.");
 		l->next = save;
 	}
 }
