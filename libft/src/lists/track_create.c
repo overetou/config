@@ -27,10 +27,13 @@ t_link *create_list_copy(t_link *l, t_link*(*copy_func)(t_link*))
 	l = l->next;
 	while (l)
 	{
+		putendl("create list copy: one loop in the while.");
 		head->next = copy_func(l);
 		l = l->next;
 		head = head->next;
 	}
+	head->next = NULL;
+	putendl("appended a NULL at the end of the list.");
 	return (new);
 }
 
@@ -39,11 +42,12 @@ void	link_track_insert_list_copy(t_link_track *t, t_link *l, t_link*(*copy_func)
 	link_track_insert_list(t, create_list_copy(l, copy_func));
 }
 
-void	link_track_replace_link_with_list_copy(t_link_track *t, t_link *to_replace, t_link *list, t_link*(*copy_func)(t_link*))
+t_link*	link_track_replace_link_with_list_copy(t_link_track *t, t_link *to_replace, t_link *list, t_link*(*copy_func)(t_link*))
 {
 	link_track_insert_list_copy(t, list, copy_func);
 	putendl("link_track_replace_link_with_list: link_track_insert_list passed");
 	link_track_remove_link(t, to_replace);
+	return (t->first);
 }
 
 //This func is used to put all non processed expr at the start of the list.
