@@ -42,7 +42,7 @@ void	quick_putnb(const int n)
 {
 	mult_size_t	meta;
 
-	//printf("quick_putnb: true = %d\n", n);
+	////printf("quick_putnb: true = %d\n", n);
 	if (n < 0)
 		find_mult_size(-n, &meta);
 	else

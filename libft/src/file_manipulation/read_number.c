@@ -22,14 +22,14 @@ char	read_int(t_buf *b, int *n)
 
 	count = 0;
 	mem = *n * char_to_int(b->str[b->pos]);
-	//printf("read_int: first mem = %d\n", mem);
+	////printf("read_int: first mem = %d\n", mem);
 	*n = mem;
 	if (mem < 0)
 	{
 		while (read_smart_inc(b) && is_digit(b->str[b->pos]))
 		{
 			mem = mem * 10 - char_to_int(b->str[b->pos]);
-		//	printf("read_int: step mem = %d\n", mem);
+		//	//printf("read_int: step mem = %d\n", mem);
 			if (int_have_different_sign(*n, mem))
 				return (0);
 			*n = mem;

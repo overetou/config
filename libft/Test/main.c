@@ -29,7 +29,7 @@ BOOL	slen_test(void)
 {
 	if (slen("cou") == 3)
 		return (1);
-	printf("slen(cou) = %d\n", slen("cou"));
+	//printf("slen(cou) = %d\n", slen("cou"));
 	return (0);
 }
 
