@@ -38,10 +38,18 @@ void	track_remove_last(t_track *t, void (*free_func)(void*))
 {
 	t_link*	l;
 
+	if (t->first == t->last)
+	{
+		putendl("track_remove_last: entered single element removal case.");
+		free_func((t->last));
+		t->first = NULL;
+		return ;
+	}
 	l = t->first;
 	while (l->next != t->last)
 		l = l->next;
-	free_func(t->last);
+	putendl("track_remove_last: entered multiple element removal case.");
+	free_func((t->last));
 	t->last = l;
 }
 
@@ -50,25 +58,36 @@ void	destroy_link_track_content(t_link_track* t)
 	t_link	*l;
 	t_link	*destroyer;
 
-	l = ((t_link_track*)t)->first;
-	if (l == NULL)
-		return ;
-	while (l != ((t_link_track*)t)->last)
+	if (t == NULL)
 	{
-		destroyer = l;
-		l = l->next;
-		if (destroyer == NULL)
-			putendl("Attempting to free a NULL");
-		free(destroyer);
+		putendl("Error of logic: passed link_track to destroy is NULL");
+		return;
 	}
-	free(l);
-	t->first = NULL;
+	l = ((t_link_track*)t)->first;
+	if (l != NULL)
+	{
+		putendl("first sublink of last main track is ");
+		while (l != t->last)
+		{
+			destroyer = l;
+			l = l->next;
+			if (destroyer == NULL)
+				putendl("Attempting to free a NULL");
+			free(destroyer);
+		}
+		free(l);
+	}
+	else
+		putendl("first element of the link_track to delete is NULL");
 }
 
 void	destroy_link_track(void	*t)
 {
+	putendl("entered destroy link track");
 	destroy_link_track_content(t);
-	free(((t_link_track*)t));
+	putendl("before free error.");
+	free(t);
+	putendl("after free error.");
 }
 
 void	link_track_remove_link(t_link_track *t, t_link *l)

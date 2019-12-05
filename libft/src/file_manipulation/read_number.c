@@ -18,9 +18,7 @@
 char	read_int(t_buf *b, int *n)
 {
 	int	mem;
-	int count;
 
-	count = 0;
 	mem = *n * char_to_int(b->str[b->pos]);
 	////printf("read_int: first mem = %d\n", mem);
 	*n = mem;
@@ -62,9 +60,7 @@ char	read_float(t_buf *b, float *n)
 {
 	float	mem;
 	float	sign;
-	int		count;
 
-	count = 0;
 	sign = *n;
 	mem = sign * char_to_int(b->str[b->pos]);
 	*n = mem;
