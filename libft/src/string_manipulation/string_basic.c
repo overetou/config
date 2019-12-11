@@ -18,6 +18,7 @@ int	copy_string(const char* source, char* recipient)
 		recipient[i] = source[i];
 		i++;
 	}
+	recipient[i] = '\0';
 	return (i);
 }
 	

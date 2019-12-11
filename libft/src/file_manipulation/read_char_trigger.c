@@ -15,13 +15,14 @@
 /*
 **Returns -1 if EOF was reached without any match. Else returns the index of the matched string.
 */
-int		file_match_next_strset(t_buf *b, t_simple *s)
+int		file_match_next_strset(t_buf *b, t_track *string_links)
 {
 	int i;
 
 	if (b->length == 0)
 		return (-1);
-	while ((i = chr_match_in_any_stringlink(b->str[b->pos], s)) < 0)
+	//printf("len = %d, pos = %d first char = %c\n", b->length, b->pos, b->str[b->pos]);
+	while ((i = chr_match_in_any_stringlink(b->str[b->pos], string_links)) < 0)
 	{
 		if (read_smart_inc(b) != 1)
 			return (-1);
@@ -41,7 +42,7 @@ BOOL	parse_and_trigger(t_buf *b, t_trigger_set *set)
 
 	if (refresh_buf(b) == 0)
 		return (0);
-	while ((i = file_match_next_strset(b, (t_simple*)(set->trigger_strings.first))) >= 0)
+	while ((i = file_match_next_strset(b, &(set->trigger_strings))) >= 0)
 	{
 	//	quick_putnb(i);putstr(" pos = ");quick_putnb(b->pos);
 		f = (char (*)(t_buf*, void*))get_link_content_by_index((t_simple*)(set->trigger_funcs.first), i);

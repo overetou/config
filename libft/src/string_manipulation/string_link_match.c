@@ -12,17 +12,20 @@
 
 #include "libft.h"
 
-int	chr_match_in_any_stringlink(const char c, t_simple *s)
+int	chr_match_in_any_stringlink(const char c, t_track *string_links)
 {
 	int	i;
+	t_simple *current_link;
 
 	i = 0;
-	while (s)
+	current_link = (void*)(string_links->first);
+	while (1)
 	{
-		if (chr_match_any_in_string(c, s->content) != -1)
+		if (chr_match_any_in_string(c, current_link->content) != -1)
 			return (i);
+		if (current_link == (void*)(string_links->last))
+			return (-1);
 		i++;
-		s = s->next;
+		current_link = current_link->next;
 	}
-	return (-1);
 }

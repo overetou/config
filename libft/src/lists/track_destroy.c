@@ -63,10 +63,9 @@ void	destroy_link_track_content(t_link_track* t)
 		putendl("Error of logic: passed link_track to destroy is NULL");
 		return;
 	}
-	l = ((t_link_track*)t)->first;
+	l = t->first;
 	if (l != NULL)
 	{
-		putendl("first sublink of last main track is ");
 		while (l != t->last)
 		{
 			destroyer = l;
@@ -79,15 +78,13 @@ void	destroy_link_track_content(t_link_track* t)
 	}
 	else
 		putendl("first element of the link_track to delete is NULL");
+	t->first = NULL;
 }
 
 void	destroy_link_track(void	*t)
 {
-	putendl("entered destroy link track");
 	destroy_link_track_content(t);
-	putendl("before free error.");
 	free(t);
-	putendl("after free error.");
 }
 
 void	link_track_remove_link(t_link_track *t, t_link *l)

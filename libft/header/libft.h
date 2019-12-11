@@ -109,7 +109,7 @@ BOOL	find_and_skip(t_buf *b, BOOL (*func)(const char));
 BOOL	read_go_next_line(t_buf *b);
 BOOL	read_skip_till_c(t_buf *b, const char c);
 	//read_char_trigger
-int		file_match_next_strset(t_buf *b, t_simple *s);
+int		file_match_next_strset(t_buf *b, t_track *string_links);
 BOOL	parse_and_trigger(t_buf *b, t_trigger_set *set);
 	//wrap_open
 int	open_check(const char *file_name, const char *extension, int option);
@@ -150,7 +150,7 @@ BOOL	str_equals_any(char *str, char **candidates);
 int		chr_match_any_in_string(const char c, const char *array);
 int		chr_match_in_any_string(const char c, const char **array_set);
 	//string_link_match
-int	chr_match_in_any_stringlink(const char c, t_simple *s);
+int	chr_match_in_any_stringlink(const char c, t_track *string_links);
 	//string_find
 int	string_reverse_find(const char *str, const char to_find, int searchable_s);
 
@@ -207,6 +207,7 @@ t_simple	*t_simple_create(void *content);
 t_simple	*create_void_simple(void);
 void	*t_simpl_content(void* link);
 	//track_create
+t_link *create_list_copy(t_link *l, t_link*(*copy_func)(t_link*));
 t_link_track	*link_track_create(t_link *l);
 void	link_track_replace_link_with_list(t_link_track *t, t_link *to_replace, t_link *list);
 t_link	*link_track_replace_link_with_list_copy(t_link_track *t, t_link *to_replace, t_link *list, t_link*(*copy_func)(t_link*));
