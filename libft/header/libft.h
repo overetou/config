@@ -50,6 +50,14 @@ typedef struct	s_link_track
 	t_link		*last;
 }				t_link_track;
 
+typedef struct	s_link_track_two_last
+{
+	struct s_link_track	*next;
+	t_link		*first;
+	t_link		*last;
+	t_link		*before_last;
+}				t_link_track_two_last;
+
 typedef struct	s_trigger_set
 {
 	t_track         trigger_strings;
