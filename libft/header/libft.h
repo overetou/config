@@ -137,12 +137,12 @@ void	putchr(const char c);
 void	putstr(const char* str);
 void	putendl(const char* str);
 void	put_arrow(const char* str, int i);
-void	putnb(const int n, const  mult_size_t meta);
-void	quick_putnb(const int n);
+void	putnb(const int n, const  mult_size_t meta, BOOL display_minus);
+void	quick_putnb(const int n, BOOL display_minus);
 void	puttab(const int* tab, int size);
 	//put_less_common
 void	dry_putstr(char *s, int size);
-void	quick_put_float(float f);
+void	quick_put_float(float f, BOOL display_minus);
 void	put_signed_float(float f);
 void	put_operation_float(float f);
 	//string_basic

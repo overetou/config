@@ -40,9 +40,9 @@ void	put_tail(float f)
 	dry_putstr(to_put, i);
 }
 
-void	quick_put_float(float f)
+void	quick_put_float(float f, BOOL display_minus)
 {
-	quick_putnb((int)f);
+	quick_putnb((int)f, display_minus);
 	put_tail(f);
 }
 
@@ -50,13 +50,12 @@ void	put_signed_float(float f)
 {
 	if (f < 0)
 	{
-		putchr('-');
-		quick_put_float(-f);
+		quick_put_float(-f, 1);
 	}
 	else
 	{
 		putchr('+');
-		quick_put_float(f);
+		quick_put_float(f, 0);
 	}
 }
 
@@ -65,12 +64,12 @@ void	put_operation_float(float f)
 	if (f < 0)
 	{
 		putstr(" - ");
-		quick_put_float(-f);
+		quick_put_float(-f, 0);
 	}
 	else
 	{
 		putstr(" + ");
-		quick_put_float(f);
+		quick_put_float(f, 0);
 	}
 }
 

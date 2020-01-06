@@ -24,21 +24,26 @@ void	put_arrow(const char* str, int i)
 	putendl("^\n");
 }
 
-void	putnb(const int n, const  mult_size_t meta)
+void	putnb(const int n, const  mult_size_t meta, BOOL display_minus)
 {
 	char	buff[meta.size + 1];
 
 	if (n < 0)
 	{
-		buff[0] = '-';
-		int_to_str(-n, buff + 1, meta.mult);
+		if (display_minus)
+		{
+			buff[0] = '-';
+			int_to_str(-n, buff + 1, meta.mult);
+		}
+		else
+			int_to_str(-n, buff, meta.mult);
 	}
 	else
 		int_to_str(n, buff, meta.mult);
 	putstr(buff);
 }
 
-void	quick_putnb(const int n)
+void	quick_putnb(const int n, BOOL display_minus)
 {
 	mult_size_t	meta;
 
@@ -47,7 +52,7 @@ void	quick_putnb(const int n)
 		find_mult_size(-n, &meta);
 	else
 		find_mult_size(n, &meta);
-	putnb(n, meta);
+	putnb(n, meta, display_minus);
 }
 
 void	puttab(const int* tab, int size)
@@ -59,10 +64,10 @@ void	puttab(const int* tab, int size)
 	while (i != size)
 	{
 		find_mult_size(tab[i], &meta);
-		putnb(tab[i], meta);
+		putnb(tab[i], meta, 1);
 		i++;
 		putstr(", ");
 	}
 	find_mult_size(tab[i], &meta);
-	putnb(tab[i], meta);
+	putnb(tab[i], meta, 1);
 }
