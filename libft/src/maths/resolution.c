@@ -64,7 +64,7 @@ UINT	resolve_second_degree(float *v, float *solutions)
 int		do_resolution(float *v, unsigned int size, float *solutions)
 {
 	putstr("Polynomial degree : ");
-	quick_putnb(size < 2 ? 0 : size - 1);
+	quick_putnb(size < 2 ? 0 : size - 1, 1);
 	putstr(".\n");
 	if (size == 0)
 		return (0);

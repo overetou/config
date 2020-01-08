@@ -47,13 +47,13 @@ void	link_and_put(UINT last_p, float v, UINT p)
 	while (last_p != p)
 	{
 		putstr(" + 0 * X^");
-		quick_putnb(last_p);
+		quick_putnb(last_p, 1);
 		last_p++;
 	}
 	putchr(' ');
 	put_operation_float(v);
 	putstr(" * X^");
-	quick_putnb(p);
+	quick_putnb(p, 1);
 }
 
 BOOL	display_v_extr(float *v, float *xtr_v, UINT *cor_p)
@@ -78,7 +78,7 @@ BOOL	display_v_extr(float *v, float *xtr_v, UINT *cor_p)
 		cor_p[i] = 0;
 	}
 	putstr(" = 0\nPolynomial degree is: ");
-	quick_putnb(last_put);
+	quick_putnb(last_put, 1);
 	putstr(".\nCan not solve, maximum supported degree is 2.\n");
 	_exit(0);
 }

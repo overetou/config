@@ -76,8 +76,8 @@ void	destroy_link_track_content(t_link_track* t)
 		}
 		free(l);
 	}
-	else
-		putendl("first element of the link_track to delete is NULL");
+	//else
+	//	putendl("first element of the link_track to delete is NULL");
 	t->first = NULL;
 }
 

@@ -42,6 +42,8 @@ void	put_tail(float f)
 
 void	quick_put_float(float f, BOOL display_minus)
 {
+	if (display_minus && f < 0 && f > -1)
+		putchr('-');
 	quick_putnb((int)f, display_minus);
 	put_tail(f);
 }
