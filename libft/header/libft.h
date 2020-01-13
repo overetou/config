@@ -211,6 +211,8 @@ void	track_remove_last(t_track *t, void (*free_func)(void*));
 void	destroy_link_track_content(t_link_track* t);
 void	destroy_link_track(void *t);
 void	link_track_remove_link(t_link_track *t, t_link *l);
+void	extract_link_from_track(t_track *t, t_link *l);
+void	track_remove_link(t_track *t, t_link *l);
 	//t_simple_basics
 t_simple	*t_simple_create(void *content);
 t_simple	*create_void_simple(void);
