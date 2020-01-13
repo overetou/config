@@ -114,3 +114,27 @@ void	link_track_remove_link(t_link_track *t, t_link *l)
 		cur->next = next;
 	}
 }
+
+void	extract_link_from_track(t_track *t, t_link *l)
+{
+	t_link *cur;
+
+	if (t->first == t->last)
+		t->first = NULL;
+	else if (l == t->first)
+		t->first = l->next;
+	else
+	{
+		cur = link_advance_till_next_equals(t->first->next, l);
+		if (l == t->last)
+			t->last = cur;
+		else
+			cur->next = l->next;
+	}
+}
+
+void	track_remove_link(t_track *t, t_link *l)
+{
+	extract_link_from_track(t, l);
+	free(l);
+}
