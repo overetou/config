@@ -1,0 +1,151 @@
+set splitright splitbelow nocp mouse=a nowrap rnu nohlsearch
+set cindent noexpandtab tabstop=4 shiftwidth=4
+autocmd TermOpen * startinsert
+set numberwidth=2
+set sts=0
+set comments=://
+let g:AutoPairs={'(':')', '[':']', '{':'}',"'":"'",'"':'"', '"""':'"""', "'''":"'''"}
+syntax enable
+filetype plugin indent on
+"The next line informs us to treat .h files as c files, not cpp.
+autocmd BufNewFile,BufRead *.h setlocal filetype=c
+if (has("termguicolors"))
+	set termguicolors
+endif
+
+set completeopt=menuone
+set omnifunc=syntaxcomplete#Complete
+"Automatically open quickfix window upon make error.
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'mhartington/oceanic-next'
+Plug 'arcticicestudio/nord-vim'
+Plug 'karoliskoncevicius/sacredforest-vim'
+call plug#end()
+
+"maps
+inoremap ô #include <><left>
+inoremap ; <End>;
+inoremap ^< #include <.h><ESC><LEFT><LEFT><LEFT>a
+inoremap î if ()<Left>
+inoremap ê else<CR>
+inoremap û else if ()<Left>
+inoremap ŵ while ()<Left>
+inoremap â return ;<Left>
+inoremap ^v (void);<Left>
+"autocmd FileType C inoremap . .<C-x><C-o>
+inoremap é <Esc>:w<Enter>
+inoremap è ->
+inoremap ç \n
+inoremap à \0
+nnoremap h :make<Return>
+nnoremap j <C-]>zz
+nnoremap k <C-T>
+nnoremap l :make run_ctags<CR>
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap q :q<Return>
+nnoremap gs :G<Return>4<Down>
+nnoremap gl :G log<Return>
+nnoremap gw :G push<Return>
+nnoremap Z<CR> ?^{<CR><Up>z<CR>
+nnoremap } }zz
+nnoremap { {zz
+nnoremap è :make test<CR>
+"ü (shift-è): build and launch tests with valgrind.
+nnoremap ü :make valgrind_test<CR>
+nnoremap é :w<Return>
+nnoremap ŝ :vs<CR>:te<CR>
+"ç (open a buffer in normal mode, insert \n in insert mode, comment selected
+"lines in visual mode)
+nnoremap ç :b<Space>
+vnoremap ç I//<Esc>
+vnoremap l :normal 
+"à (insert \0 in insert mode, open a vertical split in normal mode)
+nnoremap à :b<space>
+"terminal maps:
+tnoremap <C-d> <C-\><C-n>:q<CR>
+
+"autocommands
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o# define " . gatename . "\n"
+  execute "normal! o#endif"
+  execute "normal! kO\n"
+endfunction
+augroup CFile
+	autocmd!
+	autocmd BufNewFile *.h call <SID>insert_gates()
+augroup END
+
+function! InsertAlignedTabs()
+  execute "normal! \<up>f\<tab>"
+  "9 in the next line stands for the tab caracter.
+  while strgetchar(getline('.'),col('.')) == 9" 
+    if col(".") == col("$")-1
+      execute "normal! <down>"
+      echo "Context does not allow to insert tab alignment."
+      return
+    endif
+    execute "normal! \<right>"
+  endwhile
+  let colNb = virtcol('.')
+  execute "normal! \<down>"
+  while virtcol('.') != colNb
+    execute "normal! a\<tab>"
+  endwhile
+  echo "Successfully aligned cursor with tabs."
+endfunction
+
+inoremap <c-a> <Esc>:call InsertAlignedTabs()<cr>a
+
+function! UpdateTable()
+  if strgetchar(getline('.'), virtcol('.') - 1) == 124
+    let end_pos = virtcol('.') - 2
+    execute "normal! F│"
+    if virtcol('.') != end_pos + 2
+      let end_pos = end_pos + 2
+      while virtcol('.') != end_pos
+        execute "normal! a \<left>\<left>\<up>\<del>┬─\<left>\<left>\<down>\<down>\<del>┴─"
+        execute "normal! \<up>f|"
+        let pipe_pos = virtcol('.')
+        execute "normal! \<up>"
+        while virtcol('.') != pipe_pos
+          execute "normal! a─\<down>\<down>─\<up>\<up>"
+        endwhile
+        if end_pos == virtcol('.') - 1
+          execute "normal! a┐\<down>\<down>┘\<up>\<backspace> │"
+        else
+          execute "normal! a┐\<down>\<down>┘\<up>\<left>\<backspace> │"
+        endif
+        let end_pos = end_pos + 2
+      endwhile
+    else
+      call cursor(0, 1)
+      execute "normal! :s/|/│/g\<cr>"
+      execute "normal! O┌"
+      execute "normal! " . end_pos . "a─"
+      execute "normal! a─┐"
+      execute "normal! \<down>o└"
+      execute "normal! " . end_pos . "a─"
+      execute "normal! a─┘\<up>\<left> "
+      execute "normal! F│"
+      while virtcol('.') != 1
+        execute "normal! i \<right> \<left>\<left>\<left>\<up>─┬\<down>\<down>\<left>\<left>─┴\<up>"
+        execute "normal! F│"
+      endwhile
+      execute "normal! \<up>a─\<left>\<down> \<left>\<down>─"
+    endif
+  endif
+endfunction
+
+inoremap <c-t> <esc>:call UpdateTable()<cr>
+colorscheme nord
