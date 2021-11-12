@@ -87,22 +87,46 @@ augroup CFile
 augroup END
 
 function! InsertAlignedTabs()
-  execute "normal! \<up>f\<tab>"
-  "9 in the next line stands for the tab caracter.
-  while strgetchar(getline('.'),col('.')) == 9" 
-    if col(".") == col("$")-1
-      execute "normal! <down>"
-      echo "Context does not allow to insert tab alignment."
+  let original_line = line('.')
+  "On insert un tab. On sauvegarde la position actuelle.
+  execute "normal! a\<tab>"
+  let pos_to_match = virtcol('.')
+  "On monte d'un cran, on se met en bout de ligne et on cherche le premier tab
+  "en arriere.
+  execute "normal! \<up>$F\<tab>"
+  "Si on en trouve un 
+  if strgetchar(getline('.'),col('.')-1) == 9"
+    "Si il est apres, on sauvegarde sa position, et on va en bas.
+    if virtcol('.') > pos_to_match
+      let pos_to_match = virtcol('.')
+      execute "normal! \<down>"
+    endif
+  else
+    "Si on en trouve pas, on se rend 2 cran en bas. On cherche une tab de la
+    "meme facon qu'avant.
+    execute "normal! 2\<down>$F\<tab>"
+    "Si on est pas sur une tab, on quitte la fonction.
+    if strgetchar(getline('.'),col('.')-1) != 9"
       return
     endif
-    execute "normal! \<right>"
-  endwhile
-  let colNb = virtcol('.')
-  execute "normal! \<down>"
-  while virtcol('.') != colNb
+    "Si on est apres la pos sauvegardee
+    if virtcol('.') > pos_to_match
+      "On sauvegarde la position actuelle et on monte d'un cran.
+      let pos_to_match = virtcol('.')
+      execute "normal! \<up>"
+    endif
+  endif
+  "On append en tab le resultat de pos_sauvegardee - pos_actuelle.
+  while virtcol('.') < pos_to_match
     execute "normal! a\<tab>"
   endwhile
-  echo "Successfully aligned cursor with tabs."
+  if line('.') != original_line
+    if getline('.') < original_line
+      execute "normal! \<down>"
+    else
+      execute "normal! \<up>"
+    endif
+  endif
 endfunction
 
 inoremap <c-a> <Esc>:call InsertAlignedTabs()<cr>a
