@@ -86,50 +86,51 @@ augroup CFile
 	autocmd BufNewFile *.h call <SID>insert_gates()
 augroup END
 
-function! InsertAlignedTabs()
+function! AlignDeclarationBlocTabs()
   let original_line = line('.')
-  "On insert un tab. On sauvegarde la position actuelle.
-  execute "normal! a\<tab>"
-  let pos_to_match = virtcol('.')
-  "On monte d'un cran, on se met en bout de ligne et on cherche le premier tab
-  "en arriere.
-  execute "normal! \<up>$F\<tab>"
-  "Si on en trouve un 
-  if strgetchar(getline('.'),col('.')-1) == 9"
-    "Si il est apres, on sauvegarde sa position, et on va en bas.
-    if virtcol('.') > pos_to_match
-      let pos_to_match = virtcol('.')
-      execute "normal! \<down>"
-    endif
+  execute "normal! $"
+  if getline('.')[col('.')-1] == ";"
+    execute "normal! F\<tab>"
   else
-    "Si on en trouve pas, on se rend 2 cran en bas. On cherche une tab de la
-    "meme facon qu'avant.
-    execute "normal! 2\<down>$F\<tab>"
-    "Si on est pas sur une tab, on quitte la fonction.
-    if strgetchar(getline('.'),col('.')-1) != 9"
-      return
-    endif
-    "Si on est apres la pos sauvegardee
-    if virtcol('.') > pos_to_match
-      "On sauvegarde la position actuelle et on monte d'un cran.
-      let pos_to_match = virtcol('.')
-      execute "normal! \<up>"
-    endif
-  endif
-  "On append en tab le resultat de pos_sauvegardee - pos_actuelle.
-  while virtcol('.') < pos_to_match
     execute "normal! a\<tab>"
-  endwhile
-  if line('.') != original_line
-    if getline('.') < original_line
-      execute "normal! \<down>"
-    else
-      execute "normal! \<up>"
-    endif
   endif
+  let max_pos = virtcol('.')
+
+  execute "normal! \<up>$"
+  while getline('.')[col('.')-1] == ";"
+    execute "normal! F\<tab>"
+    if virtcol('.') > max_pos
+      let max_pos = virtcol('.')
+    endif
+    execute "normal! \<up>$"
+  endwhile
+
+  let upper_line = line('.') + 1
+  call cursor(original_line, 0)
+
+  execute "normal! \<down>$"
+  while getline('.')[col('.')-1] == ";"
+    execute "normal! F\<tab>"
+    if virtcol('.') > max_pos
+      let max_pos = virtcol('.')
+    endif
+    execute "normal! \<down>$"
+  endwhile
+
+  while line('.') > upper_line
+    execute "normal! \<up>$"
+    if getline('.')[col('.')-1] == ";"
+      execute "normal! F\<tab>"
+    endif
+    while virtcol('.') < max_pos
+      execute "normal! a\<tab>"
+    endwhile
+  endwhile
+  call cursor(original_line, virtcol('.'))
 endfunction
 
-inoremap <c-a> <Esc>:call InsertAlignedTabs()<cr>a
+inoremap <c-a> <Esc>:call AlignDeclarationBlocTabs()<cr>a
+nnoremap <c-a> :call AlignDeclarationBlocTabs()<cr>
 
 function! UpdateTable()
   if strgetchar(getline('.'), virtcol('.') - 1) == 124
