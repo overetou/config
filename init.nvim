@@ -25,9 +25,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'mhartington/oceanic-next'
 Plug 'arcticicestudio/nord-vim'
-Plug 'karoliskoncevicius/sacredforest-vim'
+Plug 'zefei/cake16'
 call plug#end()
 
 "maps
@@ -46,7 +45,6 @@ inoremap è ->
 inoremap ç \n
 inoremap à \0
 nnoremap h :make<Return>
-nnoremap j <C-]>zz
 nnoremap k <C-T>
 nnoremap l :make run_ctags<CR>
 nnoremap n nzz
@@ -72,6 +70,17 @@ vnoremap l :normal
 nnoremap à :b<space>
 "terminal maps:
 tnoremap <C-d> <C-\><C-n>:q<CR>
+
+function! SmartJump()
+  execute "normal! \<C-]>\<home>"
+  if getline('.')[col('.')-1] == "\t" || getline('.')[col('.')-1] == " " || getline('.')[col('.')-1] == "#"
+    execute "normal! zz"
+  else
+    execute "normal! z\<cr>"
+  endif
+endfunction
+
+nnoremap j :call SmartJump()<CR>
 
 "autocommands
 function! s:insert_gates()
@@ -132,6 +141,7 @@ endfunction
 inoremap <c-a> <Esc>:call AlignDeclarationBlocTabs()<cr>a
 nnoremap <c-a> :call AlignDeclarationBlocTabs()<cr>
 
+
 function! UpdateTable()
   if strgetchar(getline('.'), virtcol('.') - 1) == 124
     let end_pos = virtcol('.') - 2
@@ -173,4 +183,9 @@ function! UpdateTable()
 endfunction
 
 inoremap <c-t> <esc>:call UpdateTable()<cr>
-colorscheme nord
+
+if str2nr(strftime('%H')) > 16
+  colorscheme nord
+else
+  colorscheme cake16
+endif
